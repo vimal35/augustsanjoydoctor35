@@ -1,3 +1,4 @@
+// Blog.jsx
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -100,24 +101,120 @@ const Blog = () => {
   const blogRef = useRef(null);
   const heroRef = useRef(null);
 
-  useEffect(() => {
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+  const heroTitle = "Healthcare insights for modern hospitals and clinical teams.";
+  const heroDescription =
+    "Explore professional articles on hospital technology, patient safety, diagnostics, digital health, surgical innovation and advanced clinical infrastructure.";
 
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
     const ctx = gsap.context(() => {
-      // Parallax Hero Elements - different speeds for depth
+      const intro = gsap.timeline({
+        defaults: { ease: "power4.out" },
+      });
+
+      intro
+        .from(".blog-hero-badge", {
+          y: 28,
+          opacity: 0,
+          duration: 0.75,
+        })
+        .from(
+          ".blog-title-word span",
+          {
+            yPercent: 115,
+            opacity: 0,
+            rotateX: 45,
+            filter: "blur(10px)",
+            duration: 1.05,
+            stagger: 0.045,
+          },
+          "-=0.35"
+        )
+        .from(
+          ".blog-hero-text",
+          {
+            y: 26,
+            opacity: 0,
+            scale: 0.96,
+            filter: "blur(12px)",
+            duration: 0.8,
+          },
+          "-=0.55"
+        )
+        .from(
+          ".blog-hero-text::before",
+          {
+            scaleY: 0,
+            duration: 0.7,
+          },
+          "-=0.5"
+        )
+        .from(
+          ".blog-desc-word span",
+          {
+            yPercent: 120,
+            opacity: 0,
+            rotateX: 35,
+            filter: "blur(7px)",
+            duration: 0.72,
+            stagger: 0.018,
+          },
+          "-=0.5"
+        )
+        .from(
+          ".blog-desc-spark",
+          {
+            scale: 0,
+            opacity: 0,
+            duration: 0.55,
+            stagger: 0.08,
+            ease: "back.out(1.9)",
+          },
+          "-=0.5"
+        );
+
+      gsap.to(".blog-desc-spark", {
+        y: -8,
+        opacity: 0.55,
+        duration: 2.2,
+        repeat: -1,
+        yoyo: true,
+        stagger: 0.22,
+        ease: "sine.inOut",
+      });
+
+      gsap.to(".hero-glow-1", {
+        xPercent: -10,
+        yPercent: 18,
+        scale: 1.12,
+        duration: 8,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+
+      gsap.to(".hero-glow-2", {
+        xPercent: 12,
+        yPercent: -16,
+        scale: 1.1,
+        duration: 9,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+
       gsap.to(".parallax-bg", {
         scrollTrigger: {
           trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 1
+          scrub: 1,
         },
-        y: 200,
-        scale: 1.1
+        y: 170,
+        scale: 1.08,
+        ease: "none",
       });
 
       gsap.to(".blog-hero-badge", {
@@ -125,10 +222,11 @@ const Blog = () => {
           trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 0.8
+          scrub: 0.8,
         },
-        y: -50,
-        opacity: 0.3
+        y: -45,
+        opacity: 0.35,
+        ease: "none",
       });
 
       gsap.to(".blog-hero-title", {
@@ -136,11 +234,12 @@ const Blog = () => {
           trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 0.5
+          scrub: 0.7,
         },
-        y: -100,
+        y: -85,
         filter: "blur(5px)",
-        opacity: 0.5
+        opacity: 0.48,
+        ease: "none",
       });
 
       gsap.to(".blog-hero-text", {
@@ -148,122 +247,119 @@ const Blog = () => {
           trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 0.8
+          scrub: 0.9,
         },
-        y: -80
+        y: -45,
+        opacity: 0.72,
+        rotateX: 5,
+        ease: "none",
       });
 
-      gsap.to(".blog-hero-stats", {
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.6
-        },
-        y: -40,
-        scale: 0.95
-      });
+      gsap.fromTo(
+        ".blog-section-head",
+        { y: 50, opacity: 0, filter: "blur(8px)" },
+        {
+          scrollTrigger: {
+            trigger: ".blog-section",
+            start: "top 82%",
+            end: "top 55%",
+            scrub: 0.5,
+          },
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+        }
+      );
 
-      // Parallax for each blog card with scrubbing
       const cards = gsap.utils.toArray(".blog-card");
-      
-      cards.forEach((card, i) => {
+
+      cards.forEach((card) => {
         const image = card.querySelector(".blog-card-image img");
         const content = card.querySelector(".blog-card-content");
         const number = card.querySelector(".blog-number");
-        
-        // Image parallax - moves slower than scroll
+        const category = card.querySelector(".blog-card-image span");
+
+        gsap.fromTo(
+          card,
+          {
+            y: 110,
+            opacity: 0,
+            rotateX: 8,
+            scale: 0.96,
+            filter: "blur(10px)",
+          },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              end: "top 52%",
+              scrub: 0.55,
+            },
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            ease: "power3.out",
+          }
+        );
+
+        gsap.fromTo(
+          content,
+          { x: 60, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 78%",
+              end: "top 55%",
+              scrub: 0.7,
+            },
+            x: 0,
+            opacity: 1,
+            ease: "power2.out",
+          }
+        );
+
+        gsap.fromTo(
+          number,
+          { scale: 0.45, rotation: -12, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 76%",
+              end: "top 54%",
+              scrub: 0.5,
+            },
+            scale: 1,
+            rotation: 0,
+            opacity: 1,
+            ease: "back.out(1.7)",
+          }
+        );
+
         gsap.to(image, {
           scrollTrigger: {
             trigger: card,
             start: "top bottom",
             end: "bottom top",
-            scrub: 1.5
+            scrub: 1.4,
           },
-          yPercent: -20,
-          scale: 1.15,
-          ease: "none"
+          yPercent: -18,
+          scale: 1.16,
+          ease: "none",
         });
 
-        // Card reveal with scrub
-        gsap.fromTo(card, 
-          { 
-            y: 100, 
-            opacity: 0.3,
-            rotateX: 5
-          },
-          {
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              end: "top 45%",
-              scrub: 0.5
-            },
-            y: 0,
-            opacity: 1,
-            rotateX: 0,
-            ease: "power2.out"
-          }
-        );
-
-        // Content slide in
-        gsap.fromTo(content,
-          { x: 50, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: card,
-              start: "top 75%",
-              end: "top 55%",
-              scrub: 0.8
-            },
-            x: 0,
-            opacity: 1
-          }
-        );
-
-        // Number counter animation on scroll
-        gsap.fromTo(number,
-          { scale: 0.5, rotation: -10 },
-          {
-            scrollTrigger: {
-              trigger: card,
-              start: "top 70%",
-              end: "top 50%",
-              scrub: 0.5
-            },
-            scale: 1,
-            rotation: 0
-          }
-        );
-
-        // Floating category tag parallax
-        const category = card.querySelector(".blog-card-image span");
         gsap.to(category, {
           scrollTrigger: {
             trigger: card,
             start: "top bottom",
             end: "bottom top",
-            scrub: 1
+            scrub: 1,
           },
-          y: -30
+          y: -30,
+          ease: "none",
         });
       });
-
-      // Section header parallax
-      gsap.fromTo(".blog-section-head", 
-        { y: 50, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: ".blog-section",
-            start: "top 80%",
-            end: "top 60%",
-            scrub: 0.5
-          },
-          y: 0,
-          opacity: 1
-        }
-      );
-
     }, blogRef);
 
     return () => ctx.revert();
@@ -272,12 +368,14 @@ const Blog = () => {
   return (
     <main className="blog-page" ref={blogRef}>
       <section className="blog-hero" ref={heroRef}>
-        <div className="parallax-bg">
+        <div className="parallax-bg" aria-hidden="true">
           <div className="hero-glow hero-glow-1"></div>
           <div className="hero-glow hero-glow-2"></div>
           <div className="hero-grid-pattern"></div>
+          <div className="hero-gold-ring hero-gold-ring-1"></div>
+          <div className="hero-gold-ring hero-gold-ring-2"></div>
         </div>
-        
+
         <div className="blog-container">
           <div className="blog-hero-content">
             <div className="blog-hero-badge">
@@ -286,29 +384,24 @@ const Blog = () => {
             </div>
 
             <h1 className="blog-hero-title">
-              Healthcare insights for modern hospitals and clinical teams.
+              {heroTitle.split(" ").map((word, index) => (
+                <span className="blog-title-word" key={index}>
+                  <span>{word}</span>
+                </span>
+              ))}
             </h1>
 
             <p className="blog-hero-text">
-              Explore professional articles on hospital technology, patient
-              safety, diagnostics, digital health, surgical innovation and
-              advanced clinical infrastructure.
-            </p>
+              <span className="blog-desc-spark"></span>
+              <span className="blog-desc-spark"></span>
+              <span className="blog-desc-spark"></span>
 
-            <div className="blog-hero-stats">
-              <div className="blog-hero-stat">
-                <strong>06</strong>
-                <span>Expert Articles</span>
-              </div>
-              <div className="blog-hero-stat">
-                <strong>24/7</strong>
-                <span>Clinical Learning</span>
-              </div>
-              <div className="blog-hero-stat">
-                <strong>100%</strong>
-                <span>Hospital Focused</span>
-              </div>
-            </div>
+              {heroDescription.split(" ").map((word, index) => (
+                <span className="blog-desc-word" key={index}>
+                  <span>{word}</span>
+                </span>
+              ))}
+            </p>
           </div>
         </div>
       </section>

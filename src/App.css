@@ -1,0 +1,107 @@
+/* ===== GLOBAL RESET ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+/* ===== REMOVE EXTRA BLANK SPACE / HORIZONTAL SCROLL ===== */
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+  display: block;
+}
+
+section,
+div,
+main,
+header,
+footer {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== PAGE NAVIGATION SHOULD OPEN FROM TOP ===== */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body,
+main,
+#root {
+  scroll-margin-top: 0 !important;
+}
+
+section[id],
+div[id] {
+  scroll-margin-top: 0 !important;
+}
+
+/* ===== PREVENT UNWANTED OVERFLOW FROM ANIMATIONS / ABSOLUTE ELEMENTS ===== */
+body::before,
+body::after {
+  max-width: 100%;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+/* ===== COMMON MEDIA SAFETY ===== */
+img {
+  height: auto;
+}
+
+/* ===== FORM ELEMENTS ===== */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+/* ===== MOBILE SAFE ===== */
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  * {
+    max-width: 100%;
+  }
+}

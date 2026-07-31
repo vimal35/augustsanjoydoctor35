@@ -1,0 +1,388 @@
+/* ==========================================================================
+   AUREAL CARES · HERO SECTION
+   Base : #0E1916   |   Highlight : #E5BD38
+   ========================================================================== */
+
+.ac-hero {
+  /* palette */
+  --ink-950: #060d0b;
+  --ink-900: #0a1310;
+  --ink-800: #0E1916;
+  --ink-700: #12211d;
+  --ink-600: #172b25;
+
+  --gold: #E5BD38;
+  --gold-lt: #FFF1BE;
+  --gold-dk: #A87F1A;
+
+  --ivory: #EEF3F1;
+  --muted: #9BAEA8;
+
+  --px: 50%;
+  --py: 38%;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: clamp(320px, 44vw, 520px);
+  padding: clamp(60px, 8vw, 112px) clamp(18px, 5vw, 80px);
+  overflow: hidden;
+  text-align: center;
+  background-color: var(--ink-800);
+  background-image: linear-gradient(
+    155deg,
+    #0a1310 0%,
+    #0E1916 38%,
+    #12211d 66%,
+    #080f0d 100%
+  );
+  font-family: "Poppins", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ---------- slow drifting aurora ---------- */
+.ac-aurora {
+  position: absolute;
+  inset: -22%;
+  z-index: -6;
+  pointer-events: none;
+  background:
+    radial-gradient(36% 44% at 20% 24%, rgba(229, 189, 56, 0.13), transparent 64%),
+    radial-gradient(40% 48% at 80% 76%, rgba(30, 92, 78, 0.42), transparent 66%),
+    radial-gradient(30% 34% at 62% 14%, rgba(23, 43, 37, 0.85), transparent 68%),
+    radial-gradient(34% 40% at 28% 86%, rgba(18, 33, 29, 0.9), transparent 70%);
+  filter: blur(8px);
+  animation: acDrift 24s ease-in-out infinite alternate;
+}
+@keyframes acDrift {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1); }
+  50%  { transform: translate3d(2%, 2%, 0) scale(1.08); }
+  100% { transform: translate3d(-1%, 1.5%, 0) scale(1.03); }
+}
+
+/* ---------- soft blobs ---------- */
+.ac-blob {
+  position: absolute;
+  z-index: -5;
+  border-radius: 50%;
+  filter: blur(84px);
+  pointer-events: none;
+}
+.ac-blob--gold {
+  width: 42vw; max-width: 500px; aspect-ratio: 1;
+  top: -24%; left: -9%;
+  background: radial-gradient(circle, rgba(229, 189, 56, 0.22), transparent 70%);
+  animation: acFloatA 16s ease-in-out infinite;
+}
+.ac-blob--jade {
+  width: 48vw; max-width: 580px; aspect-ratio: 1;
+  bottom: -30%; right: -12%;
+  background: radial-gradient(circle, rgba(34, 104, 87, 0.40), transparent 72%);
+  animation: acFloatB 20s ease-in-out infinite;
+}
+@keyframes acFloatA {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50%     { transform: translate(8%,12%) scale(1.14); }
+}
+@keyframes acFloatB {
+  0%,100% { transform: translate(0,0) scale(1.06); }
+  50%     { transform: translate(-9%,-10%) scale(0.94); }
+}
+
+/* ---------- pointer glow + hairline grid ---------- */
+.ac-lines {
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  pointer-events: none;
+  background:
+    radial-gradient(34% 56% at var(--px) var(--py), rgba(229,189,56,0.14), transparent 70%),
+    linear-gradient(rgba(229,189,56,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(229,189,56,0.045) 1px, transparent 1px);
+  background-size: auto, 70px 70px, 70px 70px;
+  -webkit-mask-image: radial-gradient(72% 72% at 50% 50%, #000 8%, transparent 80%);
+          mask-image: radial-gradient(72% 72% at 50% 50%, #000 8%, transparent 80%);
+}
+
+.ac-grain {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  opacity: 0.06;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+}
+
+.ac-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: radial-gradient(120% 92% at 50% 50%, transparent 40%, rgba(3,8,6,0.62) 100%);
+}
+
+/* ---------- content ---------- */
+.ac-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+/* ============================== BADGE ============================== */
+.ac-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 16px 7px 12px;
+  margin-bottom: clamp(16px, 2.4vw, 26px);
+  font-size: clamp(0.62rem, 1.1vw, 0.73rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(229, 189, 56, 0.28);
+  border-radius: 999px;
+  background: rgba(229, 189, 56, 0.05);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  opacity: 0;
+  transform: translateY(-12px);
+}
+.is-on .ac-badge { animation: acFade 0.8s cubic-bezier(.22,1,.36,1) 0.08s forwards; }
+@keyframes acFade { to { opacity: 1; transform: translateY(0); } }
+
+.ac-badge__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: acPulse 2.4s ease-out infinite;
+}
+@keyframes acPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(229,189,56,.5); }
+  70%  { box-shadow: 0 0 0 9px rgba(229,189,56,0); }
+  100% { box-shadow: 0 0 0 0 rgba(229,189,56,0); }
+}
+
+/* ============================== TITLE ==============================
+   Unique reveal: every letter flips up out of a clip-mask in 3D,
+   blur → crisp, staggered. Then a single gold light sweeps the line.
+   ==================================================================== */
+.ac-title {
+  position: relative;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 clamp(9px, 1.2vw, 20px);
+  font-size: clamp(1.85rem, 5.4vw, 4.2rem);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  color: var(--ivory);
+  perspective: 900px;
+}
+
+.ac-word {
+  position: relative;
+  display: inline-block;
+}
+
+.ac-word__mask {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0 0.03em 0.12em;
+  vertical-align: bottom;
+}
+
+.ac-char {
+  display: inline-block;
+  transform: translate3d(0, 112%, 0) rotateX(-70deg);
+  transform-origin: 50% 0%;
+  opacity: 0;
+  filter: blur(8px);
+  will-change: transform, opacity, filter;
+}
+.is-on .ac-char {
+  animation: acCharUp 0.9s cubic-bezier(.19,1,.22,1) both;
+}
+@keyframes acCharUp {
+  0%   { transform: translate3d(0,112%,0) rotateX(-70deg); opacity: 0; filter: blur(8px); }
+  55%  { filter: blur(0); }
+  100% { transform: translate3d(0,0,0) rotateX(0deg); opacity: 1; filter: blur(0); }
+}
+
+/* ---- gold highlighted words only ---- */
+.ac-word__mask.is-gold .ac-char {
+  background: linear-gradient(
+    100deg,
+    var(--gold-dk) 0%,
+    var(--gold) 24%,
+    var(--gold-lt) 46%,
+    var(--gold) 68%,
+    var(--gold-dk) 100%
+  );
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.is-on .ac-word__mask.is-gold .ac-char {
+  animation:
+    acCharUp 0.9s cubic-bezier(.19,1,.22,1) both,
+    acShimmer 6s linear 1.8s infinite;
+}
+@keyframes acShimmer {
+  0%   { background-position: 190% 0; }
+  100% { background-position: -90% 0; }
+}
+
+/* gold aura behind highlighted words */
+.ac-word__mask.is-gold::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 52%;
+  width: 122%; height: 68%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(229,189,56,0.24), transparent 72%);
+  filter: blur(20px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1s ease 1.1s;
+  pointer-events: none;
+}
+.is-on .ac-word__mask.is-gold::before { opacity: 1; }
+
+/* ---- one-time light sweep across the headline ---- */
+.ac-shine {
+  position: absolute;
+  top: -12%;
+  left: -40%;
+  width: 32%;
+  height: 124%;
+  background: linear-gradient(100deg, transparent, rgba(255,241,190,0.26), transparent);
+  transform: skewX(-18deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.is-on .ac-shine { animation: acSweep 1.6s ease-in-out 1.2s 1 forwards; }
+@keyframes acSweep {
+  0%   { left: -40%; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { left: 112%; opacity: 0; }
+}
+
+/* ============================== RULE ============================== */
+.ac-rule {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: min(330px, 60%);
+  height: 1px;
+  margin: clamp(20px, 2.8vw, 32px) auto clamp(14px, 2vw, 22px);
+  background: linear-gradient(90deg, transparent, rgba(229,189,56,0.55), transparent);
+  transform: scaleX(0);
+  opacity: 0;
+}
+.is-on .ac-rule { animation: acRule 1s cubic-bezier(.22,1,.36,1) 1s forwards; }
+@keyframes acRule { to { transform: scaleX(1); opacity: 1; } }
+
+.ac-rule i {
+  position: absolute;
+  top: 0; left: -32%;
+  width: 32%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: acRuleRun 4.5s ease-in-out 2.4s infinite;
+}
+@keyframes acRuleRun {
+  0%   { left: -35%; }
+  55%  { left: 105%; }
+  100% { left: 105%; }
+}
+
+/* ============================== SUBTITLE ============================== */
+.ac-sub {
+  margin: 0 auto;
+  max-width: 790px;
+  overflow: hidden;
+  font-size: clamp(0.85rem, 1.55vw, 1.08rem);
+  line-height: 1.68;
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  color: var(--muted);
+}
+.ac-sub span {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+  filter: blur(6px);
+}
+.is-on .ac-sub span {
+  animation: acSubUp 1s cubic-bezier(.22,1,.36,1) 1.2s forwards;
+}
+@keyframes acSubUp {
+  to { opacity: 1; transform: translate3d(0,0,0); filter: blur(0); }
+}
+
+/* ============================== RESPONSIVE ============================== */
+@media (max-width: 1024px) {
+  .ac-hero { min-height: 400px; }
+  .ac-lines { background-size: auto, 56px 56px, 56px 56px; }
+}
+
+@media (max-width: 768px) {
+  .ac-hero { min-height: 348px; padding: 66px 22px; }
+  .ac-title {
+    font-size: clamp(1.65rem, 7.4vw, 2.55rem);
+    gap: 0 10px;
+    letter-spacing: -0.015em;
+  }
+  .ac-blob { filter: blur(58px); }
+  .ac-badge { letter-spacing: 0.14em; }
+  .ac-sub { max-width: 94%; }
+}
+
+@media (max-width: 480px) {
+  .ac-hero { min-height: 308px; padding: 56px 18px; }
+  .ac-badge {
+    font-size: 0.6rem;
+    padding: 6px 13px 6px 10px;
+    margin-bottom: 14px;
+  }
+  .ac-title {
+    font-size: clamp(1.45rem, 8.6vw, 2.05rem);
+    line-height: 1.22;
+    gap: 0 8px;
+  }
+  .ac-rule { width: 66%; margin: 18px auto 13px; }
+  .ac-sub { font-size: 0.81rem; line-height: 1.62; }
+  .ac-lines { background-size: auto, 42px 42px, 42px 42px; }
+  .ac-grain { opacity: 0.045; }
+}
+
+@media (max-width: 360px) {
+  .ac-title { font-size: 1.35rem; }
+  .ac-sub { font-size: 0.76rem; }
+}
+
+/* ============================== A11Y ============================== */
+@media (prefers-reduced-motion: reduce) {
+  .ac-hero *,
+  .ac-hero *::before,
+  .ac-hero *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .ac-char,
+  .ac-sub span,
+  .ac-badge {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .ac-rule { transform: scaleX(1); opacity: 1; }
+}

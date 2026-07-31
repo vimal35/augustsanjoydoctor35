@@ -1,0 +1,758 @@
+/* ==========================================================================
+   AUREAL HEALTHCARE - OUR CARE PROCESS (SCOPED · SCROLL-DRIVEN PIPELINE)
+   FIXED: content now fits fully inside pinned viewport (no cut-off cards)
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+.care-process-section {
+  --proc-bg-dark: #05140f;
+  --proc-bg-card: rgba(11, 38, 28, 0.75);
+  --proc-border-gold: rgba(212, 175, 55, 0.25);
+  --proc-border-active: #d4af37;
+  --proc-gold-main: #c59938;
+  --proc-gold-light: #f5e4a8;
+  --proc-gold-gradient: linear-gradient(135deg, #d4af37 0%, #e8c86b 30%, #b8860b 70%, #91681a 100%);
+  --proc-gold-hover: linear-gradient(135deg, #e8c86b 0%, #ffffff 35%, #c59938 70%, #8c6211 100%);
+  --proc-text-white: #ffffff;
+  --proc-text-offwhite: #e1e9e5;
+  --proc-text-muted: #9eb1a8;
+
+  position: relative;
+  width: 100%;
+  background-color: var(--proc-bg-dark);
+  color: var(--proc-text-white);
+  overflow: hidden;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+.care-process-section * {
+  box-sizing: border-box;
+}
+
+/* PIN WRAPPER — fits content within one viewport height */
+.proc-pin-wrap {
+  position: relative;
+  z-index: 5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* reduced padding so the card fits fully */
+  padding: 48px 20px;
+  overflow: hidden;
+}
+
+/* Ambient Backdrops */
+.proc-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+  z-index: 0;
+}
+
+.proc-glow-1 {
+  width: 550px;
+  height: 550px;
+  top: 10%;
+  left: -100px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+}
+
+.proc-glow-2 {
+  width: 600px;
+  height: 600px;
+  bottom: 0;
+  right: -150px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+}
+
+.proc-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Container */
+.proc-container {
+  position: relative;
+  z-index: 5;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header Section — compact */
+.proc-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.proc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  background: rgba(11, 38, 28, 0.85);
+  border: 1px solid var(--proc-border-gold);
+  border-radius: 50px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--proc-gold-light);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.proc-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--proc-gold-main);
+  box-shadow: 0 0 8px var(--proc-gold-main);
+}
+
+.proc-main-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  color: var(--proc-text-white);
+  line-height: 1.15;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.proc-subtitle {
+  font-size: clamp(0.85rem, 1.1vw, 0.98rem);
+  color: var(--proc-text-muted);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   HORIZONTAL PIPELINE TRACK — compact
+   ========================================================================== */
+.proc-pipeline-wrapper {
+  background: rgba(11, 38, 28, 0.6);
+  border: 1px solid var(--proc-border-gold);
+  border-radius: 20px;
+  padding: 16px 22px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.proc-pipeline-nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.pipeline-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--proc-gold-light);
+}
+
+.pipeline-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pipeline-step-count {
+  font-size: 0.8rem;
+  color: var(--proc-text-muted);
+  font-weight: 600;
+}
+
+.pipeline-step-count b {
+  color: var(--proc-gold-light);
+  font-weight: 800;
+}
+
+.proc-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(5, 20, 15, 0.7);
+  border: 1px solid var(--proc-border-gold);
+  color: var(--proc-text-white);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.proc-arrow-btn:hover:not(:disabled) {
+  background: var(--proc-gold-gradient);
+  color: #05140f;
+  border-color: var(--proc-gold-main);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.proc-arrow-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Track Line & Nodes */
+.proc-horizontal-track-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0 4px;
+  scrollbar-width: none;
+}
+
+.proc-horizontal-track-container::-webkit-scrollbar {
+  display: none;
+}
+
+.proc-track-line-bg {
+  position: absolute;
+  top: 38px;
+  left: 80px;
+  right: 80px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.proc-track-line-fill {
+  position: absolute;
+  top: 38px;
+  left: 80px;
+  height: 3px;
+  max-width: calc(100% - 160px);
+  background: var(--proc-gold-gradient);
+  z-index: 2;
+  transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 12px var(--proc-gold-main);
+}
+
+.proc-track-nodes {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  min-width: 820px;
+  gap: 12px;
+}
+
+.proc-track-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  flex: 1;
+  min-width: 148px;
+  transition: all 0.35s ease;
+}
+
+.node-icon-circle {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #05140f;
+  border: 2px solid var(--proc-border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--proc-text-muted);
+  margin-bottom: 10px;
+  transition: all 0.35s ease;
+}
+
+.node-icon-circle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.node-num-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: rgba(11, 38, 28, 0.95);
+  border: 1px solid var(--proc-border-gold);
+  color: var(--proc-gold-light);
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.node-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.node-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--proc-text-muted);
+  transition: color 0.3s ease;
+}
+
+.node-status-chip {
+  font-size: 0.64rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+}
+
+.proc-track-node.active .node-icon-circle {
+  background: var(--proc-gold-gradient);
+  color: #05140f;
+  border-color: #ffffff;
+  transform: scale(1.16);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+}
+
+.proc-track-node.active .node-title {
+  color: var(--proc-text-white);
+  font-weight: 800;
+}
+
+.proc-track-node.active .node-status-chip {
+  color: var(--proc-gold-light);
+}
+
+.proc-track-node.passed .node-icon-circle {
+  border-color: var(--proc-gold-main);
+  color: var(--proc-gold-main);
+  background: rgba(197, 153, 56, 0.15);
+}
+
+/* ==========================================================================
+   SPOTLIGHT CARD — compact
+   ========================================================================== */
+.proc-spotlight-card {
+  background: var(--proc-bg-card);
+  border: 1px solid var(--proc-border-active);
+  border-radius: 24px;
+  padding: 24px 28px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.proc-spotlight-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+/* Left Visual Column */
+.proc-visual-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.proc-image-frame {
+  position: relative;
+  width: 100%;
+  height: 175px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  border: 1px solid var(--proc-border-gold);
+  will-change: transform;
+}
+
+.proc-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 20, 15, 0.9) 0%, transparent 60%);
+}
+
+.proc-stage-pill {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(5, 20, 15, 0.85);
+  border: 1px solid var(--proc-border-gold);
+  color: var(--proc-gold-light);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.proc-step-large-num {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.15);
+  line-height: 1;
+}
+
+/* Health Gauge */
+.health-evolution-box {
+  background: rgba(5, 20, 15, 0.8);
+  border: 1px solid var(--proc-border-gold);
+  border-radius: 16px;
+  padding: 16px 18px;
+}
+
+.health-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+}
+
+.health-box-title {
+  font-weight: 700;
+  color: var(--proc-text-offwhite);
+}
+
+.health-box-status {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.76rem;
+}
+
+.health-progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.health-progress-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vitals-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vital-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.vital-label {
+  font-size: 0.68rem;
+  color: var(--proc-text-muted);
+  margin-bottom: 2px;
+}
+
+.vital-value {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--proc-text-white);
+}
+
+.vital-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Right Narrative Column */
+.proc-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.proc-sub-tag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--proc-gold-light);
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.proc-step-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  color: var(--proc-text-white);
+  margin: 0 0 12px 0;
+  line-height: 1.22;
+}
+
+.proc-step-desc {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--proc-text-offwhite);
+  margin-bottom: 18px;
+  opacity: 0.95;
+}
+
+/* Clinical Deliverable Strip */
+.proc-clinical-action-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(197, 153, 56, 0.1);
+  border: 1px solid var(--proc-border-gold);
+  border-radius: 14px;
+  padding: 13px 16px;
+  margin-bottom: 20px;
+}
+
+.action-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: var(--proc-gold-gradient);
+  color: #05140f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.action-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.action-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--proc-gold-light);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.action-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--proc-text-white);
+}
+
+/* Action Buttons */
+.proc-action-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.proc-gold-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 24px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  border: none;
+  outline: none;
+}
+
+.proc-gold-btn.primary-gold {
+  background: var(--proc-gold-gradient);
+  color: #05140f;
+  box-shadow: 0 8px 25px rgba(197, 153, 56, 0.3);
+}
+
+.proc-gold-btn.primary-gold:hover {
+  background: var(--proc-gold-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.45);
+}
+
+.btn-arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.proc-gold-btn.primary-gold:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.proc-gold-btn.outline-gold {
+  background: rgba(5, 20, 15, 0.5);
+  color: var(--proc-text-white);
+  border: 1.5px solid var(--proc-gold-main);
+  backdrop-filter: blur(8px);
+}
+
+.proc-gold-btn.outline-gold:hover {
+  background: var(--proc-gold-gradient);
+  color: #05140f;
+  transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* Below 1024 → single column; disable pin fit constraint */
+@media (max-width: 1024px) {
+  .proc-pin-wrap {
+    min-height: auto;
+    display: block;
+    padding: 60px 20px;
+  }
+
+  .proc-spotlight-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .proc-image-frame {
+    height: 220px;
+  }
+
+  .proc-header {
+    margin-bottom: 32px;
+  }
+
+  .proc-main-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+  }
+
+  .proc-step-desc {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet & Mobile */
+@media (max-width: 900px) {
+  .proc-pin-wrap {
+    min-height: auto;
+    display: block;
+    padding: 60px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .proc-header {
+    margin-bottom: 28px;
+  }
+
+  .proc-pipeline-wrapper {
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+
+  .proc-spotlight-card {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .proc-image-frame {
+    height: 200px;
+  }
+
+  .proc-step-title {
+    font-size: 1.5rem;
+  }
+
+  .proc-action-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .proc-gold-btn {
+    width: 100%;
+  }
+
+  .proc-track-line-bg,
+  .proc-track-line-fill {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .proc-pipeline-nav-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pipeline-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .proc-track-nodes {
+    min-width: 700px;
+  }
+
+  .proc-spotlight-card {
+    padding: 18px 14px;
+  }
+
+  .proc-image-frame {
+    height: 180px;
+  }
+
+  .proc-step-large-num {
+    font-size: 2.6rem;
+  }
+
+  .vitals-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .vital-divider {
+    display: none;
+  }
+
+  .vital-item {
+    flex: 1 1 40%;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .proc-pin-wrap {
+    min-height: auto;
+    display: block;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

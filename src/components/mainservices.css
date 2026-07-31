@@ -1,0 +1,675 @@
+/* ==========================================================================
+   AUREAL HEALTHCARE - MAIN SERVICES (SCOPED & NO :root)
+   ========================================================================== */
+
+.mainservices-section {
+  /* Scoped Local Variables */
+  --ms-bg-dark: #05140f;
+  --ms-bg-card: rgba(11, 38, 28, 0.75);
+  --ms-bg-card-hover: rgba(16, 52, 38, 0.92);
+  --ms-border-gold: rgba(212, 175, 55, 0.25);
+  --ms-border-active: #d4af37;
+
+  --ms-gold-main: #c59938;
+  --ms-gold-light: #f5e4a8;
+  --ms-gold-dark: #8c6211;
+  --ms-gold-gradient: linear-gradient(135deg, #d4af37 0%, #e8c86b 30%, #b8860b 70%, #91681a 100%);
+  --ms-gold-hover: linear-gradient(135deg, #e8c86b 0%, #ffffff 35%, #c59938 70%, #8c6211 100%);
+
+  --ms-text-white: #ffffff;
+  --ms-text-offwhite: #e1e9e5;
+  --ms-text-muted: #9eb1a8;
+  --ms-green-soft: #7fd6a8;
+
+  position: relative;
+  width: 100%;
+  background-color: var(--ms-bg-dark);
+  color: var(--ms-text-white);
+  padding: 100px 20px;
+  overflow: hidden;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Ambient Decorators */
+.ms-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+}
+.ms-glow-1 {
+  width: 550px; height: 550px; top: 0; left: -120px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+}
+.ms-glow-2 {
+  width: 600px; height: 600px; bottom: 0; right: -150px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+}
+.ms-grid-pattern {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.ms-container {
+  position: relative;
+  z-index: 5;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Header */
+.ms-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.ms-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(11, 38, 28, 0.85);
+  border: 1px solid var(--ms-border-gold);
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--ms-gold-light);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+.ms-badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background-color: var(--ms-gold-main);
+  box-shadow: 0 0 8px var(--ms-gold-main);
+}
+
+.ms-main-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.ms-subtitle {
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  color: var(--ms-text-muted);
+  max-width: 640px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Arrows */
+.ms-arrow-group {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.ms-arrow-btn {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(11, 38, 28, 0.8);
+  border: 1px solid var(--ms-border-gold);
+  color: var(--ms-text-white);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  backdrop-filter: blur(8px);
+}
+.ms-arrow-btn:hover {
+  background: var(--ms-gold-gradient);
+  color: #05140f;
+  border-color: var(--ms-gold-main);
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.45);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   CAROUSEL
+   ========================================================================== */
+
+.ms-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.ms-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.ms-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  background: var(--ms-bg-card);
+  border: 1px solid var(--ms-border-gold);
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+.ms-card:hover {
+  transform: translateY(-8px);
+  background: var(--ms-bg-card-hover);
+  border-color: var(--ms-border-active);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+/* Card Media */
+.ms-card-media {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+}
+.ms-card-media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.ms-card:hover .ms-card-media img {
+  transform: scale(1.08);
+}
+.ms-card-media-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(5, 20, 15, 0.95) 0%, transparent 55%);
+}
+.ms-card-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--ms-gold-gradient);
+  color: #05140f;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+.ms-card-icon-circle {
+  position: absolute;
+  bottom: -22px; right: 18px;
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: var(--ms-gold-gradient);
+  color: #05140f;
+  display: flex; align-items: center; justify-content: center;
+  border: 3px solid var(--ms-bg-dark);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+}
+
+/* Card Body */
+.ms-card-body {
+  padding: 26px 22px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.ms-card-category {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--ms-gold-light);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.ms-card-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+}
+.ms-card-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ms-text-muted);
+  margin: 0 0 18px 0;
+}
+
+/* Stats */
+.ms-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.ms-stat-box {
+  background: rgba(5, 20, 15, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 12px;
+  padding: 10px 6px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ms-stat-value {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ms-gold-main);
+}
+.ms-stat-label {
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--ms-text-muted);
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+/* Compliance */
+.ms-card-compliance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--ms-green-soft);
+  margin-bottom: 20px;
+  margin-top: auto;
+}
+.ms-card-compliance svg {
+  color: var(--ms-gold-main);
+  flex-shrink: 0;
+}
+
+/* Explore Button */
+.ms-explore-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 50px;
+  border: none;
+  background: var(--ms-gold-gradient);
+  color: #05140f;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(197, 153, 56, 0.3);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.ms-explore-btn:hover {
+  background: var(--ms-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(212, 175, 55, 0.5);
+}
+.ms-explore-btn svg {
+  transition: transform 0.3s ease;
+}
+.ms-explore-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Dots */
+.ms-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+.ms-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+.ms-dot.active {
+  width: 30px;
+  border-radius: 10px;
+  background: var(--ms-gold-gradient);
+}
+
+/* ==========================================================================
+   DETAIL MODAL (Reference-Matched Design)
+   ========================================================================== */
+
+.ms-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 12, 9, 0.88);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: msFadeIn 0.3s ease;
+}
+
+.ms-modal {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: linear-gradient(160deg, #0a241a 0%, #071a12 100%);
+  border: 1px solid var(--ms-border-gold);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.08);
+  animation: msSlideUp 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-sizing: border-box;
+}
+
+.ms-modal-close {
+  position: absolute;
+  top: 22px; right: 22px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--ms-text-white);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.ms-modal-close:hover {
+  background: var(--ms-gold-gradient);
+  color: #05140f;
+  border-color: var(--ms-gold-main);
+  transform: rotate(90deg);
+}
+
+.ms-modal-goldbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ms-gold-main);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.ms-modal-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--ms-gold-main);
+  margin: 0 0 10px 0;
+  letter-spacing: -0.01em;
+}
+
+.ms-modal-catline {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--ms-green-soft);
+  text-transform: uppercase;
+  margin: 0 0 30px 0;
+}
+
+/* Modal Grid */
+.ms-modal-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+}
+
+.ms-modal-heading {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--ms-gold-main);
+  margin: 0 0 14px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.ms-modal-overview {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ms-text-offwhite);
+  margin: 0 0 28px 0;
+}
+
+.ms-modal-procedures {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ms-modal-procedures li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--ms-text-offwhite);
+}
+.ms-zap-icon {
+  color: var(--ms-gold-main);
+  flex-shrink: 0;
+}
+
+.ms-modal-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.ms-modal-stat-box {
+  background: rgba(5, 20, 15, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 14px;
+  padding: 16px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.ms-modal-stat-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ms-gold-main);
+}
+.ms-modal-stat-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--ms-text-muted);
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+/* Specialists */
+.ms-specialist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.ms-specialist-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(5, 20, 15, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 14px;
+  padding: 14px 16px;
+  transition: border-color 0.3s ease;
+}
+.ms-specialist-card:hover {
+  border-color: var(--ms-gold-main);
+}
+.ms-specialist-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ms-gold-main);
+  color: var(--ms-gold-main);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ms-specialist-name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ms-text-white);
+}
+.ms-specialist-title {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--ms-green-soft);
+  font-weight: 600;
+  margin: 2px 0;
+}
+.ms-specialist-exp {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--ms-gold-main);
+}
+
+/* Consultation Form */
+.ms-consult-box {
+  background: rgba(5, 20, 15, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.ms-consult-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ms-consult-form input {
+  width: 100%;
+  background: rgba(3, 12, 9, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 13px 16px;
+  color: var(--ms-text-white);
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+.ms-consult-form input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.ms-consult-form input:focus {
+  border-color: var(--ms-gold-main);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.ms-schedule-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  background: var(--ms-gold-gradient);
+  color: #05140f;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(197, 153, 56, 0.35);
+  transition: all 0.35s ease;
+}
+.ms-schedule-btn:hover {
+  background: var(--ms-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(212, 175, 55, 0.5);
+}
+
+.ms-form-success {
+  text-align: center;
+  padding: 12px 4px;
+  color: var(--ms-green-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.ms-form-success strong {
+  color: var(--ms-gold-main);
+  font-size: 1.05rem;
+}
+.ms-form-success p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ms-text-offwhite);
+  margin: 0;
+}
+
+/* Animations */
+@keyframes msFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes msSlideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .ms-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+  .ms-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ms-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ms-arrow-group {
+    align-self: flex-end;
+    margin-top: -60px;
+  }
+  .ms-modal {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mainservices-section {
+    padding: 60px 16px;
+  }
+  .ms-card {
+    flex: 0 0 100%;
+  }
+  .ms-arrow-group {
+    margin-top: 0;
+    align-self: flex-start;
+  }
+  .ms-modal-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .ms-modal-stat-value {
+    font-size: 1rem;
+  }
+}

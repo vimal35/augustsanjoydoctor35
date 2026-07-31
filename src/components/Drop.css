@@ -1,0 +1,784 @@
+/* Drop.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+  --green-black: #020804;
+  --green-deep: #03150c;
+  --green-heavy: #052315;
+  --green-rich: #07391f;
+  --green-royal: #0c4a2b;
+
+  --gold: #f4c95d;
+  --gold-light: #fff2b6;
+  --gold-soft: #e8bd57;
+  --gold-deep: #a8751d;
+  --gold-muted: rgba(244, 201, 93, 0.78);
+  --gold-faint: rgba(244, 201, 93, 0.18);
+}
+
+/* Helpers for the splitText spans */
+.inline-block {
+  display: inline-block;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+/* ==========================================================================
+   DROP & CONSULT — HEAVY DARK GREEN PREMIUM GOLD THEME
+   ========================================================================== */
+
+.report-section {
+  position: relative;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(244, 201, 93, 0.22) 0%, transparent 38%),
+    radial-gradient(circle at 86% 78%, rgba(168, 117, 29, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 52% 45%, rgba(8, 76, 43, 0.65) 0%, transparent 58%),
+    linear-gradient(135deg, #010503 0%, #03150c 28%, #052315 58%, #011009 100%);
+  color: var(--gold-light);
+  padding: 5rem 1.5rem;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  z-index: 1;
+}
+
+/* Luxury dark green grid */
+.report-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(244, 201, 93, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 201, 93, 0.045) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.75;
+  z-index: -2;
+}
+
+/* Premium golden ambient orb */
+.report-section::after {
+  content: "";
+  position: absolute;
+  top: -160px;
+  right: -110px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(244, 201, 93, 0.22) 0%, transparent 70%);
+  filter: blur(55px);
+  animation: floatOrb 14s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-80px, 100px) scale(1.15);
+  }
+
+  100% {
+    transform: translate(-20px, 40px) scale(0.95);
+  }
+}
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
+.section-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 4.5rem;
+  align-items: flex-start;
+}
+
+/* ==========================================================================
+   ENTRANCE & CARD
+   ========================================================================== */
+
+.reveal-slide-l {
+  animation: slideInLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal-slide-r {
+  animation: slideInRight 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+  background:
+    linear-gradient(145deg, rgba(3, 21, 12, 0.9), rgba(6, 45, 25, 0.68)),
+    radial-gradient(circle at top, rgba(244, 201, 93, 0.12), transparent 50%);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(244, 201, 93, 0.3);
+  border-radius: 28px;
+  padding: 2.5rem;
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.72),
+    0 0 42px rgba(244, 201, 93, 0.12),
+    inset 0 1px 0 rgba(255, 242, 182, 0.22);
+  position: relative;
+}
+
+.reveal-slide-r::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), transparent);
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px) translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   TEXT
+   ========================================================================== */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(244, 201, 93, 0.18), rgba(5, 35, 21, 0.85));
+  border: 1px solid rgba(244, 201, 93, 0.55);
+  color: var(--gold-light);
+  font-size: 0.825rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 24px rgba(244, 201, 93, 0.2);
+}
+
+.eyebrow::before {
+  content: "⚡";
+  font-size: 0.95rem;
+  animation: pulseIcon 2s infinite;
+}
+
+@keyframes pulseIcon {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 0.7;
+  }
+}
+
+.reveal-words {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff7c8 0%, #f4c95d 45%, #b9872e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 6px 28px rgba(0, 0, 0, 0.45);
+}
+
+.reveal-words span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: revealWord 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealWord {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-up {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--gold-muted);
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  max-width: 92%;
+}
+
+/* ==========================================================================
+   REPORT STEPS
+   ========================================================================== */
+
+.report-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.report-steps::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 23px;
+  width: 2px;
+  height: calc(100% - 60px);
+  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-deep) 100%);
+  opacity: 0.72;
+  z-index: 0;
+}
+
+.report-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(5, 35, 21, 0.7), rgba(2, 12, 7, 0.72));
+  border: 1px solid rgba(244, 201, 93, 0.18);
+  backdrop-filter: blur(10px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.report-step:hover {
+  transform: translateX(12px);
+  background:
+    linear-gradient(135deg, rgba(8, 58, 33, 0.88), rgba(3, 21, 12, 0.82));
+  border-color: rgba(244, 201, 93, 0.58);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.42),
+    0 0 24px rgba(244, 201, 93, 0.12);
+}
+
+.report-step-index {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff2b6 0%, #f4c95d 48%, #a8751d 100%);
+  color: #03150c;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 7px 22px rgba(244, 201, 93, 0.38);
+  transition: transform 0.3s ease;
+}
+
+.report-step:hover .report-step-index {
+  transform: scale(1.1) rotate(6deg);
+  box-shadow: 0 8px 28px rgba(244, 201, 93, 0.55);
+}
+
+.report-step p {
+  margin: 0;
+  font-size: 0.985rem;
+  color: rgba(255, 242, 182, 0.72);
+  line-height: 1.5;
+}
+
+.report-step p strong {
+  display: block;
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* ==========================================================================
+   DROPZONE
+   ========================================================================== */
+
+.dropzone {
+  border: 2px dashed rgba(244, 201, 93, 0.52);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, rgba(12, 74, 43, 0.62) 0%, rgba(2, 12, 7, 0.82) 100%);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.dropzone::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(244, 201, 93, 0.14) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.dropzone:hover,
+.dropzone.is-dragging {
+  border-color: var(--gold-light);
+  background:
+    radial-gradient(circle at center, rgba(14, 84, 48, 0.82), rgba(3, 21, 12, 0.88));
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.52),
+    0 0 28px rgba(244, 201, 93, 0.18),
+    inset 0 0 28px rgba(244, 201, 93, 0.1);
+}
+
+.dropzone:hover::before,
+.dropzone.is-dragging::before {
+  opacity: 1;
+  animation: rotateGlow 10s linear infinite;
+}
+
+@keyframes rotateGlow {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dropzone-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.25rem auto;
+  background: rgba(244, 201, 93, 0.12);
+  border: 1px solid rgba(244, 201, 93, 0.42);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 25px rgba(244, 201, 93, 0.12);
+}
+
+.dropzone:hover .dropzone-icon {
+  transform: scale(1.12) translateY(-6px);
+  color: #03150c;
+  background: linear-gradient(135deg, #fff2b6 0%, #f4c95d 55%, #a8751d 100%);
+  box-shadow: 0 14px 34px rgba(244, 201, 93, 0.42);
+}
+
+.dropzone-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.dropzone h4 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin: 0 0 0.5rem 0;
+}
+
+.dropzone p {
+  color: rgba(255, 242, 182, 0.66);
+  font-size: 0.925rem;
+  margin: 0.35rem 0 1.25rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.magnetic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.9rem 2.2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  border: 1px solid rgba(244, 201, 93, 0.28);
+  user-select: none;
+}
+
+.magnetic::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 242, 182, 0) 0%,
+    rgba(255, 242, 182, 0.45) 50%,
+    rgba(255, 242, 182, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+.magnetic:hover::after {
+  left: 130%;
+}
+
+.magnetic:active {
+  transform: scale(0.96);
+}
+
+.dropzone-browse {
+  background: linear-gradient(135deg, rgba(244, 201, 93, 0.18), rgba(5, 35, 21, 0.76));
+  border: 1px solid rgba(244, 201, 93, 0.58);
+  color: var(--gold-light);
+  box-shadow: 0 9px 26px rgba(0, 0, 0, 0.42);
+  z-index: 2;
+}
+
+.dropzone-browse:hover {
+  background: linear-gradient(135deg, #fff2b6 0%, #f4c95d 58%, #a8751d 100%);
+  color: #03150c;
+  border-color: transparent;
+  box-shadow: 0 12px 34px rgba(244, 201, 93, 0.42);
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   FILE PILLS
+   ========================================================================== */
+
+.file-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  max-height: 160px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.file-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  background: linear-gradient(135deg, rgba(3, 21, 12, 0.95), rgba(7, 57, 31, 0.82));
+  border: 1px solid rgba(244, 201, 93, 0.45);
+  border-radius: 99px;
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  font-weight: 700;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.38);
+  animation: pillIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pillIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.file-pill button {
+  background: rgba(244, 201, 93, 0.14);
+  color: var(--gold);
+  border: 1px solid rgba(244, 201, 93, 0.25);
+  border-radius: 10px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.725rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.file-pill button:hover {
+  background: linear-gradient(135deg, #fff2b6, #f4c95d);
+  color: #03150c;
+}
+
+/* ==========================================================================
+   INPUT & NOTE
+   ========================================================================== */
+
+.patient-note-input {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(2, 12, 7, 0.88), rgba(5, 35, 21, 0.75));
+  border: 1px solid rgba(244, 201, 93, 0.24);
+  border-radius: 14px;
+  padding: 0.85rem 1.15rem;
+  color: var(--gold-light);
+  font-size: 0.95rem;
+  font-family: inherit;
+  margin-top: 1.25rem;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.patient-note-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 18px rgba(244, 201, 93, 0.22);
+}
+
+.patient-note-input::placeholder {
+  color: rgba(244, 201, 93, 0.48);
+}
+
+.report-note {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.865rem;
+  color: rgba(255, 242, 182, 0.74);
+  margin: 1.5rem 0;
+  padding: 0.85rem 1.2rem;
+  background: linear-gradient(135deg, rgba(1, 8, 4, 0.62), rgba(5, 35, 21, 0.58));
+  border-radius: 14px;
+  border-left: 3px solid var(--gold);
+}
+
+.report-note svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   SUBMIT BOX
+   ========================================================================== */
+
+.button-group-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.whatsapp-direct-box {
+  background:
+    linear-gradient(135deg, rgba(244, 201, 93, 0.13), rgba(5, 35, 21, 0.88)),
+    radial-gradient(circle at top, rgba(255, 242, 182, 0.12), transparent 55%);
+  border: 1.5px solid rgba(244, 201, 93, 0.48);
+  border-radius: 22px;
+  padding: 1.5rem;
+  position: relative;
+  
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+.whatsapp-direct-box:hover {
+  border-color: var(--gold-light);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(244, 201, 93, 0.18),
+    inset 0 0 32px rgba(244, 201, 93, 0.12);
+  transform: translateY(-2px);
+}
+
+.whatsapp-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #fff2b6 0%, #f4c95d 48%, #a8751d 100%);
+  color: #03150c !important;
+  font-size: 1.15rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 800;
+  padding: 1.15rem 1.75rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 242, 182, 0.48);
+  box-shadow: 0 12px 34px rgba(244, 201, 93, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.whatsapp-submit-btn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(135deg, #fff9cf 0%, #ffd86b 48%, #bf8b2f 100%);
+  box-shadow: 0 18px 44px rgba(244, 201, 93, 0.48);
+}
+
+.whatsapp-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.35);
+}
+
+/* ==========================================================================
+   TOAST
+   ========================================================================== */
+
+.toast-notice {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background:
+    linear-gradient(135deg, rgba(5, 35, 21, 0.98), rgba(1, 8, 4, 0.98)),
+    radial-gradient(circle at top, rgba(244, 201, 93, 0.18), transparent 60%);
+  border: 2px solid var(--gold);
+  color: var(--gold-light);
+  padding: 1.15rem 1.75rem;
+  border-radius: 20px;
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.72),
+    0 0 28px rgba(244, 201, 93, 0.28);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  animation: slideInToast 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInToast {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+  .report-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .reveal-words {
+    font-size: 2.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .report-section {
+    padding: 3.5rem 1.15rem;
+  }
+
+  .reveal-slide-r {
+    padding: 1.75rem;
+    border-radius: 24px;
+  }
+
+  .reveal-words {
+    font-size: 2.25rem;
+  }
+
+  .report-step {
+    padding: 1rem 1.15rem;
+    gap: 1rem;
+  }
+
+  .report-step-index {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .report-steps::before {
+    left: 20px;
+  }
+
+  .dropzone {
+    padding: 2rem 1.25rem;
+  }
+
+  .whatsapp-direct-box {
+    padding: 1.25rem;
+  }
+
+  .whatsapp-submit-btn {
+    font-size: 1.05rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .toast-notice {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reveal-words {
+    font-size: 1.95rem;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .dropzone h4 {
+    font-size: 1.15rem;
+  }
+}

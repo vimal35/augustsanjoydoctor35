@@ -1,15 +1,34 @@
 /* ============================================================
    AUREAL CARES — APPOINTMENT PAGE (Premium Edition)
-   Font: Poppins only | Palette: Blue / Teal / Green / White-Gray
+   Font: Poppins only
 ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   --blue: #0b63c4;
-  --blue-deep: #073b73;
+  --blue-deep: #020431;
   --teal: #00acc1;
   --teal-light: #26e0d1;
   --green: #16c784;
+
+  /* ---- STEPS / HOW IT WORKS palette ---- */
+  --st-950: #030a07;
+  --st-900: #061510;
+  --st-800: #0a2318;
+  --st-700: #0d3122;
+  --st-600: #114031;
+
+  --gold: #E5BD38;
+  --gold-lt: #FFF0B4;
+  --gold-dk: #A8811A;
+  --gold-06: rgba(229, 189, 56, 0.06);
+  --gold-12: rgba(229, 189, 56, 0.12);
+  --gold-22: rgba(229, 189, 56, 0.22);
+  --gold-40: rgba(229, 189, 56, 0.40);
+
+  --st-ivory: #F2F7F3;
+  --st-muted: rgba(230, 242, 234, 0.62);
+
   --bg-body: #f7fafc;
   --bg-panel: #ffffff;
   --border-soft: #e6edf3;
@@ -33,13 +52,6 @@
 }
 
 .apt-page * { font-family: 'Poppins', sans-serif; }
-
-.apt-accent {
-  background: linear-gradient(90deg, var(--teal), var(--green));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
 
 /* ---------- Custom Cursor ---------- */
 .apt-cursor {
@@ -68,10 +80,7 @@
 /* ============================================================
    HERO
 ============================================================ */
-.apt-hero {
-  position: relative;
-  min-height: 100vh;
-}
+.apt-hero { position: relative; min-height: 100vh; }
 
 .apt-hero-pin {
   position: relative;
@@ -80,7 +89,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 20%, #eaf6f8 0%, #f7fafc 55%, #f7fafc 100%);
+  background: linear-gradient(135deg, #010F01 0%, #042102 30%, #072505 60%, #042802 100%);
   isolation: isolate;
 }
 
@@ -142,7 +151,7 @@
 .apt-hero-sub {
   font-size: 1.12rem;
   line-height: 1.75;
-  color: var(--text-muted);
+  color: rgb(215, 213, 213);
   max-width: 620px;
   margin: 0 auto 32px;
   font-weight: 400;
@@ -185,23 +194,23 @@
   animation: aptScrollDot 1.8s ease-in-out infinite;
 }
 @keyframes aptScrollDot {
-  0% { top: 8px; opacity: 1; }
-  70% { top: 22px; opacity: 0; }
-  100% { top: 8px; opacity: 0; }
+  0%   { top: 8px;  opacity: 1; }
+  70%  { top: 22px; opacity: 0; }
+  100% { top: 8px;  opacity: 0; }
 }
 
 /* ============================================================
    STATS STRIP
 ============================================================ */
 .apt-stats-strip {
-  background: linear-gradient(135deg, var(--blue-deep), var(--blue));
+  background: radial-gradient(circle at top, #012b1e 0%, #0E1917 42%, #030706 100%);
   padding: 52px 24px;
 }
 .apt-stats-inner {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 24px;
   text-align: center;
 }
@@ -221,20 +230,179 @@
 }
 
 /* ============================================================
-   STEPS
+   ★ HOW IT WORKS — ULTRA PREMIUM DARK GREEN + GOLD ★
 ============================================================ */
-.apt-steps { padding: 140px 0 120px; background: var(--bg-panel); }
-.apt-steps-inner { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
-
-.apt-steps-title {
-  text-align: center;
-  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
-  font-weight: 800;
-  color: var(--blue-deep);
-  margin-bottom: 70px;
-  letter-spacing: -0.5px;
+.apt-steps {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(88px, 11vw, 150px) 0 clamp(80px, 10vw, 130px);
+  background-color: var(--st-900);
+  background-image:
+    radial-gradient(at 12% 8%,  rgba(229, 189, 56, 0.09) 0px, transparent 52%),
+    radial-gradient(at 88% 92%, rgba(17, 64, 49, 0.85) 0px, transparent 55%),
+    radial-gradient(at 50% 45%, rgba(13, 49, 34, 0.75) 0px, transparent 70%),
+    linear-gradient(165deg, #030a07 0%, #061510 34%, #0a2318 62%, #04100b 100%);
 }
 
+/* floating light veils */
+.apt-steps-glow {
+  position: absolute;
+  z-index: -3;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+}
+.apt-steps-glow--a {
+  width: 44vw; max-width: 540px; aspect-ratio: 1;
+  top: -18%; left: -10%;
+  background: radial-gradient(circle, rgba(229, 189, 56, 0.20), transparent 70%);
+  animation: aptGlowA 17s ease-in-out infinite alternate;
+}
+.apt-steps-glow--b {
+  width: 50vw; max-width: 620px; aspect-ratio: 1;
+  bottom: -26%; right: -12%;
+  background: radial-gradient(circle, rgba(23, 92, 66, 0.55), transparent 72%);
+  animation: aptGlowB 21s ease-in-out infinite alternate;
+}
+@keyframes aptGlowA {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(7%, 10%) scale(1.14); }
+}
+@keyframes aptGlowB {
+  0%   { transform: translate(0, 0) scale(1.06); }
+  100% { transform: translate(-8%, -9%) scale(0.94); }
+}
+
+/* gold hairline mesh + grain */
+.apt-steps-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(229, 189, 56, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(229, 189, 56, 0.04) 1px, transparent 1px);
+  background-size: 74px 74px;
+  -webkit-mask-image: radial-gradient(72% 68% at 50% 44%, #000 6%, transparent 82%);
+          mask-image: radial-gradient(72% 68% at 50% 44%, #000 6%, transparent 82%);
+}
+.apt-steps-grain {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+}
+
+.apt-steps-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ---------- Head ---------- */
+.apt-steps-head {
+  text-align: center;
+  margin-bottom: clamp(52px, 6vw, 82px);
+}
+
+.apt-steps-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 17px 7px 13px;
+  margin-bottom: 20px;
+  font-size: clamp(0.62rem, 1.1vw, 0.73rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-22);
+  border-radius: 999px;
+  background: var(--gold-06);
+  box-shadow: 0 0 26px rgba(229, 189, 56, 0.07) inset;
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+}
+.apt-eyebrow-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: aptDotPulse 2.4s ease-out infinite;
+}
+@keyframes aptDotPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(229, 189, 56, 0.5); }
+  70%  { box-shadow: 0 0 0 9px rgba(229, 189, 56, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(229, 189, 56, 0); }
+}
+
+.apt-steps-title {
+  font-size: clamp(1.95rem, 4vw, 3.05rem);
+  font-weight: 800;
+  color: var(--st-ivory);
+  letter-spacing: -0.03em;
+  line-height: 1.14;
+  margin: 0 0 14px;
+}
+
+/* GOLD highlight word */
+.apt-accent {
+  background: linear-gradient(
+    100deg,
+    var(--gold-dk) 0%,
+    var(--gold) 26%,
+    var(--gold-lt) 48%,
+    var(--gold) 70%,
+    var(--gold-dk) 100%
+  );
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: aptGoldShimmer 6s linear infinite;
+}
+@keyframes aptGoldShimmer {
+  0%   { background-position: 190% 0; }
+  100% { background-position: -90% 0; }
+}
+
+.apt-steps-sub {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: clamp(0.88rem, 1.5vw, 1.02rem);
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--st-muted);
+}
+
+.apt-steps-rule {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: min(280px, 56%);
+  height: 1px;
+  margin: 26px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold-40), transparent);
+}
+.apt-steps-rule i {
+  position: absolute;
+  top: 0; left: -32%;
+  width: 32%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: aptRuleRun 5s ease-in-out infinite;
+}
+@keyframes aptRuleRun {
+  0%   { left: -35%; }
+  55%  { left: 105%; }
+  100% { left: 105%; }
+}
+
+/* ---------- Grid ---------- */
 .apt-steps-grid {
   position: relative;
   display: grid;
@@ -244,60 +412,119 @@
 
 .apt-steps-connector {
   position: absolute;
-  top: 46px;
+  top: 56px;
   left: 6%;
   right: 6%;
   height: 2px;
-  background: repeating-linear-gradient(90deg, var(--teal) 0 8px, transparent 8px 16px);
+  background: repeating-linear-gradient(90deg, var(--gold-40) 0 8px, transparent 8px 18px);
   z-index: 0;
   transform-origin: left;
+  opacity: 0.7;
 }
 
+/* ---------- Card ---------- */
 .apt-step-card {
   position: relative;
   z-index: 1;
-  background: var(--bg-panel);
-  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(229, 189, 56, 0.045), transparent 34%),
+    rgba(10, 30, 22, 0.58);
+  border: 1px solid rgba(229, 189, 56, 0.14);
   border-radius: var(--radius-lg);
-  padding: 38px 28px;
-  box-shadow: var(--shadow-soft);
+  padding: 38px 28px 34px;
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+          backdrop-filter: blur(16px) saturate(140%);
+  box-shadow:
+    0 18px 44px -22px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(229, 189, 56, 0.04) inset;
   will-change: transform, clip-path;
 }
 
+/* diagonal sheen on hover */
+.apt-step-sheen {
+  position: absolute;
+  top: -60%;
+  left: -80%;
+  width: 45%;
+  height: 220%;
+  background: linear-gradient(100deg, transparent, rgba(255, 240, 180, 0.14), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.85s var(--ease-premium);
+  pointer-events: none;
+  z-index: 2;
+}
+.apt-step-card:hover .apt-step-sheen { left: 135%; }
+
+/* corner gold aura */
+.apt-step-card::after {
+  content: "";
+  position: absolute;
+  top: -46%;
+  right: -34%;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(229, 189, 56, 0.14), transparent 70%);
+  filter: blur(34px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.apt-step-card:hover::after { opacity: 1; }
+
+/* number badge — GOLD */
 .apt-step-num {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--blue), var(--teal));
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.95rem;
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(140deg, var(--gold-lt) 0%, var(--gold) 38%, var(--gold-dk) 100%);
+  color: #06140E;
+  font-weight: 800;
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
   margin-bottom: 22px;
+  box-shadow:
+    0 10px 26px -8px rgba(229, 189, 56, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset;
 }
 
-.apt-step-icon { font-size: 2rem; margin-bottom: 18px; }
+/* icon — GOLD tinted */
+.apt-step-icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 18px;
+  filter:
+    drop-shadow(0 0 12px rgba(229, 189, 56, 0.45))
+    sepia(0.85) saturate(2.4) hue-rotate(-8deg) brightness(1.05);
+}
 
 .apt-step-card h3 {
-  font-size: 1.12rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 10px;
+  color: var(--gold);
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
 }
 .apt-step-card p {
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.65;
+  font-size: 0.9rem;
+  color: var(--st-muted);
+  line-height: 1.7;
   margin: 0;
 }
+
 .apt-step-line {
   margin-top: 22px;
   height: 3px;
   width: 40px;
   border-radius: 4px;
-  background: linear-gradient(90deg, var(--teal), var(--green));
+  background: linear-gradient(90deg, var(--gold), var(--gold-dk));
+  box-shadow: 0 0 14px rgba(229, 189, 56, 0.35);
+  transition: width 0.5s var(--ease-premium);
 }
+.apt-step-card:hover .apt-step-line { width: 78px; }
 
 /* ---------- Divider ---------- */
 .apt-divider {
@@ -379,7 +606,7 @@
   bottom: 0; left: 0;
   height: 2px;
   width: 0;
-  background: linear-gradient(90deg, var(--teal), var(--green));
+  background: #076814;
   transition: width 0.4s var(--ease-premium);
 }
 .apt-input:focus ~ .apt-input-line { width: 100%; }
@@ -404,9 +631,7 @@
   box-shadow: 0 16px 34px -10px rgba(0, 172, 193, 0.5);
   transition: box-shadow 0.35s ease, transform 0.35s ease;
 }
-.apt-submit-btn:hover {
-  box-shadow: 0 22px 44px -10px rgba(0, 172, 193, 0.6);
-}
+.apt-submit-btn:hover { box-shadow: 0 22px 44px -10px rgba(0, 172, 193, 0.6); }
 .apt-submit-btn:disabled { opacity: 0.85; cursor: progress; }
 
 .apt-btn-arrow { transition: transform 0.35s ease; }
@@ -432,7 +657,7 @@
 .apt-btn-loader span:nth-child(3) { animation-delay: 0.3s; }
 @keyframes aptDotBounce {
   0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
-  40% { transform: scale(1); opacity: 1; }
+  40%           { transform: scale(1);   opacity: 1; }
 }
 
 /* ---------- Success State ---------- */
@@ -511,7 +736,7 @@
   position: relative;
   padding: 130px 24px;
   text-align: center;
-  background: linear-gradient(135deg, var(--blue-deep) 0%, #0a4a8f 60%, var(--teal) 130%);
+  background: linear-gradient(145deg, #0E1916 0%, #122521 25%, #183A33 60%, #2A6558 100%);
   overflow: hidden;
 }
 .apt-bottom-glow {
@@ -537,26 +762,68 @@
    REDUCED MOTION
 ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
   .apt-hero-title-inner { opacity: 1 !important; filter: none !important; transform: none !important; }
 }
 
 /* ============================================================
    RESPONSIVE
 ============================================================ */
+@media (max-width: 1200px) {
+  .apt-steps-connector { top: 52px; left: 5%; right: 5%; }
+  .apt-step-card { padding: 34px 24px 30px; }
+}
+
 @media (max-width: 1024px) {
   .apt-form-grid { grid-template-columns: 1fr; }
-  .apt-steps-grid { grid-template-columns: repeat(2, 1fr); }
-  .apt-steps-connector { display: none; }
   .apt-stats-inner { grid-template-columns: repeat(2, 1fr); }
+
+  .apt-steps-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .apt-steps-connector { display: none; }
+  .apt-steps-mesh { background-size: 56px 56px; }
+  .apt-steps-glow { filter: blur(84px); }
+}
+
+@media (max-width: 768px) {
+  .apt-steps-inner { padding: 0 24px; }
+  .apt-steps-head { margin-bottom: 42px; }
+  .apt-steps-eyebrow { letter-spacing: 0.15em; }
+  .apt-step-num { width: 44px; height: 44px; font-size: 0.9rem; margin-bottom: 18px; }
+  .apt-step-icon { font-size: 1.75rem; margin-bottom: 14px; }
 }
 
 @media (max-width: 640px) {
-  .apt-steps-grid { grid-template-columns: 1fr; }
   .apt-form-card, .apt-info-card { padding: 30px 24px; }
-  .apt-steps, .apt-form-section { padding: 90px 0; }
+  .apt-form-section { padding: 90px 0; }
   .apt-bottom-cta { padding: 90px 20px; }
   .apt-stats-inner { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
+
+  .apt-steps { padding: 76px 0 66px; }
+  .apt-steps-inner { padding: 0 18px; }
+  .apt-steps-grid { grid-template-columns: 1fr; gap: 18px; }
+  .apt-steps-title { font-size: clamp(1.7rem, 7.6vw, 2.2rem); }
+  .apt-steps-sub { font-size: 0.86rem; max-width: 92%; }
+  .apt-steps-rule { width: 66%; }
+  .apt-step-card {
+    padding: 28px 22px 26px;
+    border-radius: 20px;
+  }
+  .apt-step-card h3 { font-size: 1.04rem; }
+  .apt-step-card p { font-size: 0.86rem; }
+  .apt-steps-mesh { background-size: 42px 42px; }
+  .apt-steps-glow { opacity: 0.6; filter: blur(66px); }
+}
+
+@media (max-width: 400px) {
+  .apt-steps-title { font-size: 1.55rem; }
+  .apt-steps-eyebrow { font-size: 0.58rem; padding: 6px 13px 6px 10px; }
+  .apt-step-card { padding: 24px 18px; }
+  .apt-step-num { width: 42px; height: 42px; border-radius: 12px; }
 }
 
 @media (min-width: 2200px) {

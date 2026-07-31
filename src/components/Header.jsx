@@ -10,17 +10,26 @@ import {
 } from "lucide-react";
 import "./Header.css";
 
-const navItems = [
+const defaultNavItems = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
-  { label: "Products", path: "/products" },
+  { label: "Store", path: "/products" },
   { label: "Services", path: "/services" },
   { label: "Blog", path: "/blog" },
-  { label: "Updates", path: "/updates" },
+  { label: "Academics", path: "/updates" },
   { label: "Contact", path: "/contact" },
 ];
 
-const Header = () => {
+const Header = ({
+  logo = "/logo.png",
+  logoAlt = "Company Logo",
+  navItems = defaultNavItems,
+  appointmentPath = "/Appointment",
+  appointmentLabel = "Book Appointment",
+  phone = "+1 800 123 4567",
+  email = "care@clinic.com",
+  topBarText = "Trusted Clinical Care — Serving you since 2010",
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -67,31 +76,52 @@ const Header = () => {
     setMenuOpen(false);
   };
 
+  const renderLogo = (isMobile = false) => {
+    if (logo) {
+      if (typeof logo === "string") {
+        return (
+          <img
+            src={logo}
+            alt={logoAlt}
+            className={isMobile ? "mobile-brand-logo" : "site-brand-logo"}
+          />
+        );
+      }
+      return logo;
+    }
+
+    return (
+      <div className={isMobile ? "mobile-brand-logo-default" : "site-brand-logo-default"}>
+        <span className="brand-mark">
+          <HeartPulse size={isMobile ? 22 : 26} strokeWidth={1.8} />
+        </span>
+      </div>
+    );
+  };
+
   return (
     <>
       <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
         {/* Top accent bar */}
         <div className="header-top-bar">
           <div className="header-top-inner">
-            <span className="top-bar-text">Trusted Clinical Care — Serving you since 2010</span>
+            <span className="top-bar-text">{topBarText}</span>
             <div className="top-bar-links">
-              <a href="tel:+18001234567" className="top-bar-link">📞 +1 800 123 4567</a>
+              <a href={`tel:${phone.replace(/\s+/g, "")}`} className="top-bar-link">
+                📞 {phone}
+              </a>
               <span className="top-bar-divider" />
-              <a href="mailto:care@aureal.com" className="top-bar-link">✉ care@aureal.com</a>
+              <a href={`mailto:${email}`} className="top-bar-link">
+                ✉ {email}
+              </a>
             </div>
           </div>
         </div>
 
         <div className="header-container">
-          {/* Logo */}
-          <Link to="/" className="site-brand" aria-label="Aureal home">
-            <span className="brand-mark">
-              <HeartPulse size={26} strokeWidth={1.8} />
-            </span>
-            <span className="brand-content">
-              <span className="brand-name">Aureal</span>
-              <span className="brand-tagline">Clinical Care</span>
-            </span>
+          {/* Logo (Aureal Clinical Care text removed, replaced with Logo) */}
+          <Link to="/" className="site-brand" aria-label="Homepage">
+            {renderLogo(false)}
           </Link>
 
           {/* Desktop Navigation */}
@@ -112,15 +142,15 @@ const Header = () => {
           {/* Header Actions */}
           <div className="header-actions">
             <Link
-              to="/Appointment"
+              to={appointmentPath}
               className="appointment-button"
-              aria-label="Book an appointment"
+              aria-label={appointmentLabel}
             >
               <span className="appointment-icon">
                 <CalendarDays size={16} strokeWidth={2} />
               </span>
               <span className="appointment-label">
-                <span className="appointment-full">Book Appointment</span>
+                <span className="appointment-full">{appointmentLabel}</span>
                 <span className="appointment-short">Book</span>
               </span>
               <ArrowUpRight
@@ -165,19 +195,14 @@ const Header = () => {
           <div className="panel-glow" />
 
           <div className="mobile-panel-header">
+            {/* Mobile Logo (Text removed, replaced with Logo) */}
             <Link
               to="/"
               className="mobile-panel-brand"
               onClick={closeMenu}
-              aria-label="Aureal home"
+              aria-label="Homepage"
             >
-              <span className="brand-mark">
-                <HeartPulse size={22} strokeWidth={1.8} />
-              </span>
-              <span className="brand-content">
-                <span className="brand-name">Aureal</span>
-                <span className="brand-tagline">Clinical Care</span>
-              </span>
+              {renderLogo(true)}
             </Link>
 
             <button
@@ -222,7 +247,7 @@ const Header = () => {
             </div>
 
             <Link
-              to="/Appointment"
+              to={appointmentPath}
               className="mobile-appointment-button"
               onClick={closeMenu}
             >

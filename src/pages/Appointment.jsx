@@ -3,6 +3,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import './Appointment.css';
+import Whybookus from "../components/whybokus";
+
+import Form from "../components/Form";
+import Call from "../components/Call";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,7 +73,6 @@ const Appointment = () => {
 
       /* ============================================================
          HERO — pinned scroll-scrubbed storytelling reveal
-         blur-to-clear + scale + clip-path, driven by scroll progress
       ============================================================ */
       gsap.set('.apt-hero-title-inner', { filter: 'blur(14px)' });
 
@@ -91,7 +94,6 @@ const Appointment = () => {
           y: 24, opacity: 0, scale: 0.9, stagger: 0.1, duration: 0.7, ease: 'back.out(2)'
         }, '-=0.5');
 
-      // Pin hero briefly and scrub a scale/parallax as user scrolls past
       if (heroPinRef.current) {
         gsap.to('.apt-hero-title-inner', {
           scale: 0.92,
@@ -144,11 +146,22 @@ const Appointment = () => {
       });
 
       /* ============================================================
-         STEPS — clip-path reveal + 3D-ish stagger + connecting line draw
+         STEPS — clip-path reveal + stagger + connector draw
+         (same animation, gold hover glow)
       ============================================================ */
+      gsap.from('.apt-steps-eyebrow', {
+        y: 24, opacity: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: stepsRef.current, start: 'top 82%', toggleActions: 'play none none reverse' },
+      });
+
       gsap.from('.apt-steps-title', {
         y: 60, opacity: 0, duration: 1, ease: 'power3.out',
         scrollTrigger: { trigger: stepsRef.current, start: 'top 80%', toggleActions: 'play none none reverse' },
+      });
+
+      gsap.from('.apt-steps-sub', {
+        y: 30, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.08,
+        scrollTrigger: { trigger: stepsRef.current, start: 'top 78%', toggleActions: 'play none none reverse' },
       });
 
       gsap.utils.toArray('.apt-step-card').forEach((card, i) => {
@@ -168,12 +181,26 @@ const Appointment = () => {
         const num = card.querySelector('.apt-step-num');
         const icon = card.querySelector('.apt-step-icon');
         card.addEventListener('mouseenter', () => {
-          gsap.to(card, { y: -10, scale: 1.03, boxShadow: '0 30px 60px -20px rgba(0,150,199,0.28)', duration: 0.45, ease: 'power2.out' });
+          gsap.to(card, {
+            y: -10,
+            scale: 1.03,
+            boxShadow: '0 32px 64px -22px rgba(229,189,56,0.30)',
+            borderColor: 'rgba(229,189,56,0.40)',
+            duration: 0.45,
+            ease: 'power2.out',
+          });
           gsap.to(num, { scale: 1.15, rotation: 8, duration: 0.45, ease: 'back.out(2)' });
           gsap.to(icon, { y: -6, scale: 1.12, duration: 0.4, ease: 'back.out(2)' });
         });
         card.addEventListener('mouseleave', () => {
-          gsap.to(card, { y: 0, scale: 1, boxShadow: '0 8px 30px rgba(15,42,67,0.06)', duration: 0.45, ease: 'power2.out' });
+          gsap.to(card, {
+            y: 0,
+            scale: 1,
+            boxShadow: '0 18px 44px -22px rgba(0,0,0,0.85)',
+            borderColor: 'rgba(229,189,56,0.14)',
+            duration: 0.45,
+            ease: 'power2.out',
+          });
           gsap.to(num, { scale: 1, rotation: 0, duration: 0.45 });
           gsap.to(icon, { y: 0, scale: 1, duration: 0.4 });
         });
@@ -296,7 +323,7 @@ const Appointment = () => {
       });
 
       /* ============================================================
-         DIVIDER + BOTTOM CTA (pinned parallax reveal)
+         DIVIDER + BOTTOM CTA
       ============================================================ */
       gsap.utils.toArray('.apt-divider').forEach((d) => {
         gsap.fromTo(d,
@@ -372,10 +399,11 @@ const Appointment = () => {
   ];
 
   const stats = [
-    { count: 30, suffix: '+', label: 'Specialists On-Call' },
-    { count: 24, suffix: '/7', label: 'Coordinator Support' },
-    { count: 98.6, suffix: '%', label: 'Patient Satisfaction' },
-    { count: 30, suffix: ' min', label: 'Avg. Callback Time' },
+    { count: 30, suffix: '+', label: 'Specialities' },
+    { count: 500, suffix: '+', label: 'MBBS Doctors' },
+    { count: 10, suffix: '+', label: 'Centers' },
+    { count: 30, suffix: ' min', label: 'Avg. Emergency Visits ' },
+    { count: 4.9, suffix: '+', label: 'Google Rating' },
   ];
 
   return (
@@ -397,11 +425,56 @@ const Appointment = () => {
           <div className="apt-hero-mask">
             <div className="apt-hero-content">
               <span className="apt-hero-badge">Book an Appointment</span>
-              <h1 className="apt-hero-title">
-                <span className="apt-hero-title-inner">
-                  Your Health Journey<br />
-                  <span className="apt-hero-accent">Starts Here</span>
+              <h1
+                style={{
+                  margin: 0,
+                  padding: 0,
+                  fontFamily: "'Poppins', sans-serif",
+                  fontWeight: "800",
+                  fontSize: "clamp(2.5rem, 7vw, 5.8rem)",
+                  lineHeight: "1.05",
+                  letterSpacing: "-2px",
+                  color: "#f9d441",
+                  textAlign: "center",
+                  textShadow: "0 8px 30px rgba(0,0,0,0.25)",
+                  animation: "fadeUp 1.2s ease-out forwards",
+                  opacity: 0,
+                  transform: "translateY(50px)"
+                }}
+              >
+                <span style={{ display: "inline-block", animation: "slideIn 1s ease forwards" }}>
+                  Your Health Journey
+                  <br />
+                  <span
+                    style={{
+                      display: "inline-block",
+                      background: "#e1bf29",
+                      backgroundSize: "300% auto",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      fontWeight: "900",
+                      textShadow: "none",
+                      animation: "gradientMove 5s linear infinite"
+                    }}
+                  >
+                    Starts Here
+                  </span>
                 </span>
+
+                <style>{`
+                  @keyframes fadeUp {
+                    from { opacity: 0; transform: translateY(50px); }
+                    to   { opacity: 1; transform: translateY(0); }
+                  }
+                  @keyframes slideIn {
+                    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+                    to   { opacity: 1; transform: translateY(0) scale(1); }
+                  }
+                  @keyframes gradientMove {
+                    0%   { background-position: 0% center; }
+                    100% { background-position: 300% center; }
+                  }
+                `}</style>
               </h1>
               <p className="apt-hero-sub">
                 Schedule a consultation with our specialist team. Experience precision medicine
@@ -423,7 +496,12 @@ const Appointment = () => {
         <div className="apt-stats-inner">
           {stats.map((s, i) => (
             <div className="apt-stat-block" key={i}>
-              <div className="apt-stat-num" ref={(el) => (counterRefs.current[i] = el)} data-count={s.count} data-suffix={s.suffix}>
+              <div
+                className="apt-stat-num"
+                ref={(el) => (counterRefs.current[i] = el)}
+                data-count={s.count}
+                data-suffix={s.suffix}
+              >
                 0
               </div>
               <p>{s.label}</p>
@@ -432,14 +510,35 @@ const Appointment = () => {
         </div>
       </section>
 
-      {/* STEPS */}
+      {/* ============================================================
+          STEPS — HOW IT WORKS  (Ultra Premium Dark Green + Gold)
+      ============================================================ */}
       <section className="apt-steps" ref={stepsRef}>
+        <span className="apt-steps-glow apt-steps-glow--a" aria-hidden="true" />
+        <span className="apt-steps-glow apt-steps-glow--b" aria-hidden="true" />
+        <span className="apt-steps-mesh" aria-hidden="true" />
+        <span className="apt-steps-grain" aria-hidden="true" />
+
         <div className="apt-steps-inner">
-          <h2 className="apt-steps-title">How It <span className="apt-accent">Works</span></h2>
+          <div className="apt-steps-head">
+            <span className="apt-steps-eyebrow">
+              <i className="apt-eyebrow-dot" />
+              Simple 4-Step Process
+            </span>
+            <h2 className="apt-steps-title">
+              How It <span className="apt-accent">Works</span>
+            </h2>
+            <p className="apt-steps-sub">
+              From your first request to hospital-grade care at your doorstep — precision at every step.
+            </p>
+            <span className="apt-steps-rule" aria-hidden="true"><i /></span>
+          </div>
+
           <div className="apt-steps-grid">
             <div className="apt-steps-connector"></div>
             {steps.map((step) => (
               <div className="apt-step-card" key={step.num}>
+                <span className="apt-step-sheen" aria-hidden="true" />
                 <div className="apt-step-num">{step.num}</div>
                 <div className="apt-step-icon">{step.icon}</div>
                 <h3>{step.title}</h3>
@@ -453,130 +552,11 @@ const Appointment = () => {
 
       <div className="apt-divider"></div>
 
-      {/* FORM + INFO */}
-      <section className="apt-form-section" ref={formRef}>
-        <div className="apt-form-grid">
-          <div className="apt-form-col">
-            <h2 className="apt-form-title">Book Your <span className="apt-accent">Consultation</span></h2>
-            <p className="apt-form-subtitle">Fill in your details below and our team will reach out within 30 minutes.</p>
-
-            {!submitted ? (
-              <form className="apt-form-card" onSubmit={handleSubmit}>
-                <div className="apt-field-group">
-                  <label className={`apt-label ${focused === 'patientName' || formData.patientName ? 'apt-label-up' : ''}`}>
-                    Patient Name *
-                  </label>
-                  <input
-                    type="text" name="patientName" className="apt-input"
-                    value={formData.patientName} onChange={handleChange}
-                    onFocus={() => setFocused('patientName')} onBlur={() => setFocused('')}
-                    required
-                  />
-                  <div className="apt-input-line"></div>
-                </div>
-
-                <div className="apt-field-group">
-                  <label className={`apt-label ${focused === 'whatsapp' || formData.whatsapp ? 'apt-label-up' : ''}`}>
-                    WhatsApp Number *
-                  </label>
-                  <input
-                    type="tel" name="whatsapp" className="apt-input"
-                    value={formData.whatsapp} onChange={handleChange}
-                    onFocus={() => setFocused('whatsapp')} onBlur={() => setFocused('')}
-                    required
-                  />
-                  <div className="apt-input-line"></div>
-                </div>
-
-                <div className="apt-field-group">
-                  <label className={`apt-label ${focused === 'age' || formData.age ? 'apt-label-up' : ''}`}>
-                    Age *
-                  </label>
-                  <input
-                    type="number" name="age" className="apt-input"
-                    value={formData.age} onChange={handleChange}
-                    onFocus={() => setFocused('age')} onBlur={() => setFocused('')}
-                    min="1" max="120" required
-                  />
-                  <div className="apt-input-line"></div>
-                </div>
-
-                <div className="apt-field-group">
-                  <label className={`apt-label apt-label-textarea ${focused === 'message' || formData.message ? 'apt-label-up' : ''}`}>
-                    Message / Health Concern
-                  </label>
-                  <textarea
-                    name="message" className="apt-input apt-textarea"
-                    value={formData.message} onChange={handleChange}
-                    onFocus={() => setFocused('message')} onBlur={() => setFocused('')}
-                    rows="4"
-                  ></textarea>
-                  <div className="apt-input-line"></div>
-                </div>
-
-                <button type="submit" className="apt-mag apt-submit-btn" disabled={loading}>
-                  {loading ? (
-                    <span className="apt-btn-loader"><span></span><span></span><span></span></span>
-                  ) : (
-                    <>
-                      <span className="btn-text-mask">Book Appointment</span>
-                      <span className="apt-btn-arrow">→</span>
-                    </>
-                  )}
-                </button>
-              </form>
-            ) : (
-              <div className="apt-success">
-                <div className="apt-success-icon">✓</div>
-                <h3>Appointment Requested!</h3>
-                <p>Our clinical coordinator will contact you on WhatsApp within 30 minutes.</p>
-              </div>
-            )}
-          </div>
-
-          <div className="apt-info-col" ref={infoRef}>
-            <div className="apt-info-card">
-              <div className="apt-info-header"><h3>Why Book With Us?</h3></div>
-              <ul className="apt-info-list">
-                <li>
-                  <span className="apt-info-ico">🏥</span>
-                  <div><strong>100% Specialist-Led</strong><p>Every consultation handled by board-certified specialists only.</p></div>
-                </li>
-                <li>
-                  <span className="apt-info-ico">⚡</span>
-                  <div><strong>30-Min Response</strong><p>Our coordinator calls you back within 30 minutes of submission.</p></div>
-                </li>
-                <li>
-                  <span className="apt-info-ico">🏠</span>
-                  <div><strong>Home-Based Care</strong><p>Hospital-grade clinical care delivered at your doorstep.</p></div>
-                </li>
-                <li>
-                  <span className="apt-info-ico">🌐</span>
-                  <div><strong>UK Standards</strong><p>Clinical protocols aligned with NICE guidelines and NABH benchmarks.</p></div>
-                </li>
-                <li>
-                  <span className="apt-info-ico">🔒</span>
-                  <div><strong>100% Confidential</strong><p>Your medical data is encrypted and handled with strict privacy protocols.</p></div>
-                </li>
-              </ul>
-            </div>
-
-            <div className="apt-contact-strip">
-              <span>📞</span>
-              <div><strong>Need Immediate Help?</strong><p>Call us: +91 98765 43210</p></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* BOTTOM CTA */}
-      <section className="apt-bottom-cta">
-        <div className="apt-bottom-glow"></div>
-        <div className="apt-bottom-inner">
-          <h2>Experience <span className="apt-accent">Precision Care</span> at Home</h2>
-          <p>Aureal Cares — Redefining healthcare delivery across Puducherry, Tamil Nadu & Kerala</p>
-        </div>
-      </section>
+      <>
+        <Whybookus />
+        <Form />
+        <Call />
+      </>
     </div>
   );
 };

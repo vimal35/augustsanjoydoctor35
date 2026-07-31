@@ -1,6 +1,7 @@
 /* ============================================================
-   HEADER — AUREAL CLINICAL CARE
-   Professional Advanced Stylesheet
+   HEADER — CLINICAL CARE
+   Premium Dark Green + Golden Theme
+   (Pure CSS — Poppins font, gold accent gradients & smooth transitions)
    ============================================================ */
 
 /* ---------- Import Poppins Font ---------- */
@@ -8,40 +9,44 @@
 
 /* ---------- CSS Custom Properties ---------- */
 :root {
-  --header-bg: #0389C3;
-  --header-bg-scrolled: #026fa0;
-  --header-top-bar: #026fa0;
-  --header-border: rgba(255, 255, 255, 0.12);
-  --header-shadow: 0 4px 32px rgba(3, 137, 195, 0.22), 0 1px 0 rgba(255,255,255,0.08) inset;
-  --header-shadow-scrolled: 0 8px 40px rgba(3, 137, 195, 0.35), 0 2px 0 rgba(255,255,255,0.06) inset;
+  --header-top-bar: #02140c;
+  --header-border: rgba(244, 201, 93, 0.14);
+  --header-shadow: 0 4px 32px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 241, 184, 0.06) inset;
+  --header-shadow-scrolled: 0 8px 40px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(244, 201, 93, 0.14) inset;
 
-  --nav-link-color: rgba(255, 255, 255, 0.82);
-  --nav-link-hover: #ffffff;
-  --nav-link-active: #ffffff;
-  --nav-underline: #7dd6f5;
+  --nav-link-color: rgba(255, 241, 184, 0.72);
+  --nav-link-hover: #fff1b8;
+  --nav-link-active: #fff1b8;
+  --nav-underline: #f4c95d;
 
-  --brand-name-color: #ffffff;
-  --brand-tagline-color: rgba(255, 255, 255, 0.65);
-  --brand-mark-bg: rgba(255, 255, 255, 0.15);
-  --brand-mark-border: rgba(255, 255, 255, 0.25);
+  --brand-name-color: #fff1b8;
+  --brand-tagline-color: rgba(244, 201, 93, 0.62);
+  --brand-mark-bg: rgba(244, 201, 93, 0.12);
+  --brand-mark-border: rgba(244, 201, 93, 0.32);
 
-  --btn-bg: #ffffff;
-  --btn-color: #0389C3;
-  --btn-hover-bg: #e8f7ff;
-  --btn-shadow: 0 4px 18px rgba(0, 0, 0, 0.18), 0 1px 0 rgba(255,255,255,0.9) inset;
-  --btn-shadow-hover: 0 6px 26px rgba(0, 0, 0, 0.22);
+  /* Dark golden button */
+  --btn-bg: linear-gradient(135deg, #f4c95d 0%, #d9a63b 55%, #b8842a 100%);
+  --btn-bg-hover: linear-gradient(135deg, #ffe9a8 0%, #f4c95d 45%, #d9a63b 100%);
+  --btn-color: #1c1405;
+  --btn-shadow: 0 4px 18px rgba(244, 201, 93, 0.28), 0 1px 0 rgba(255, 241, 184, 0.5) inset;
+  --btn-shadow-hover: 0 8px 30px rgba(244, 201, 93, 0.5), 0 1px 0 rgba(255, 241, 184, 0.6) inset;
 
-  --toggle-color: #ffffff;
+  --toggle-color: #f4c95d;
 
-  --panel-bg: #ffffff;
-  --panel-shadow: -8px 0 60px rgba(3, 137, 195, 0.18), -2px 0 12px rgba(0,0,0,0.08);
-  --panel-border: rgba(3, 137, 195, 0.1);
+  /* Mobile panel — dark green */
+  --panel-bg: linear-gradient(165deg, #051b11 0%, #03150d 55%, #020c07 100%);
+  --panel-shadow: -8px 0 60px rgba(0, 0, 0, 0.55), -2px 0 12px rgba(0, 0, 0, 0.35);
+  --panel-border: rgba(244, 201, 93, 0.16);
   --panel-width: 320px;
 
-  --mobile-link-color: #1a2a3a;
-  --mobile-link-hover-bg: #f0f9ff;
-  --mobile-link-active-bg: #e0f3fc;
-  --mobile-link-active-color: #0389C3;
+  --mobile-link-color: rgba(255, 241, 184, 0.85);
+  --mobile-link-hover-bg: rgba(244, 201, 93, 0.08);
+  --mobile-link-active-bg: rgba(244, 201, 93, 0.15);
+  --mobile-link-active-color: #f4c95d;
+
+  --gold: #f4c95d;
+  --gold-light: #fff1b8;
+  --gold-deep: #a8751d;
 
   --top-bar-height: 34px;
   --header-height: 68px;
@@ -69,7 +74,7 @@
    ============================================================ */
 .header-top-bar {
   background: var(--header-top-bar);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(244, 201, 93, 0.1);
   height: var(--top-bar-height);
   display: flex;
   align-items: center;
@@ -89,10 +94,9 @@
 }
 
 .top-bar-text {
-  font-family: var(--font-family);
   font-size: 11.5px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 241, 184, 0.6);
   letter-spacing: 0.3px;
   white-space: nowrap;
   overflow: hidden;
@@ -107,28 +111,27 @@
 }
 
 .top-bar-link {
-  font-family: var(--font-family);
   font-size: 11.5px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 241, 184, 0.68);
   text-decoration: none;
   letter-spacing: 0.2px;
   transition: color var(--transition);
 }
 
 .top-bar-link:hover {
-  color: #ffffff;
+  color: var(--gold-light);
 }
 
 .top-bar-divider {
   width: 1px;
   height: 14px;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(244, 201, 93, 0.28);
   display: block;
 }
 
 /* ============================================================
-   SITE HEADER
+   SITE HEADER — very dark green gradient
    ============================================================ */
 .site-header {
   position: sticky;
@@ -136,7 +139,15 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--header-bg);
+  background:
+    linear-gradient(
+      145deg,
+      #010805 0%,
+      #03150d 25%,
+      #07271a 55%,
+      #052015 75%,
+      #010805 100%
+    );
   box-shadow: var(--header-shadow);
   font-family: var(--font-family);
   transition:
@@ -145,11 +156,18 @@
 }
 
 .site-header.is-scrolled {
-  background: var(--header-bg-scrolled);
+  background:
+    radial-gradient(
+      circle at top left,
+      #0d3a24 0%,
+      #062316 30%,
+      #02120b 70%,
+      #010805 100%
+    );
   box-shadow: var(--header-shadow-scrolled);
 }
 
-/* Subtle inner top highlight */
+/* Subtle golden inner top highlight */
 .site-header::before {
   content: "";
   position: absolute;
@@ -160,22 +178,22 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.3) 30%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.3) 70%,
+    rgba(244, 201, 93, 0.28) 30%,
+    rgba(255, 241, 184, 0.5) 50%,
+    rgba(244, 201, 93, 0.28) 70%,
     transparent 100%
   );
   pointer-events: none;
 }
 
-/* Bottom mesh gradient */
+/* Bottom mesh glow */
 .site-header::after {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
     ellipse 80% 120% at 50% -20%,
-    rgba(255, 255, 255, 0.06) 0%,
+    rgba(244, 201, 93, 0.07) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -198,27 +216,48 @@
 }
 
 /* ============================================================
-   BRAND / LOGO
+   BRAND / LOGO (Replaced text with dedicated Logo image/mark)
    ============================================================ */
 .site-brand {
   display: flex;
   align-items: center;
-  gap: 11px;
   text-decoration: none;
   flex-shrink: 0;
   outline: none;
   border-radius: var(--radius-sm);
-  font-family: var(--font-family);
   transition: opacity var(--transition), transform var(--transition);
 }
 
 .site-brand:hover {
-  opacity: 0.92;
+  opacity: 0.94;
   transform: translateY(-1px);
 }
 
 .site-brand:focus-visible {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 2px rgba(244, 201, 93, 0.6);
+}
+
+/* Logo Image in Header */
+.site-brand-logo {
+  height: 74px;
+  max-height: 68px;
+  width: auto;
+  max-width: 420px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+  transition: transform var(--transition), filter var(--transition);
+}
+
+.site-brand:hover .site-brand-logo {
+  transform: scale(1.03);
+  filter: drop-shadow(0 3px 12px rgba(244, 201, 93, 0.35));
+}
+
+.site-brand-logo-default {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .brand-mark {
@@ -230,41 +269,17 @@
   border-radius: 12px;
   background: var(--brand-mark-bg);
   border: 1px solid var(--brand-mark-border);
-  color: #ffffff;
+  color: var(--gold);
   backdrop-filter: blur(8px);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12), 0 1px 0 rgba(255,255,255,0.18) inset;
-  transition: transform var(--transition), background var(--transition);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 241, 184, 0.14) inset;
+  transition: transform var(--transition), background var(--transition), color var(--transition);
   flex-shrink: 0;
 }
 
 .site-brand:hover .brand-mark {
   transform: rotate(-5deg) scale(1.06);
-  background: rgba(255, 255, 255, 0.22);
-}
-
-.brand-content {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  gap: 3px;
-}
-
-.brand-name {
-  font-family: var(--font-family);
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--brand-name-color);
-  letter-spacing: -0.3px;
-  line-height: 1;
-}
-
-.brand-tagline {
-  font-family: var(--font-family);
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--brand-tagline-color);
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
+  background: rgba(244, 201, 93, 0.2);
+  color: var(--gold-light);
 }
 
 /* ============================================================
@@ -283,10 +298,8 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
   padding: 8px 13px;
   border-radius: var(--radius-sm);
-  font-family: var(--font-family);
   font-size: 13.5px;
   font-weight: 500;
   color: var(--nav-link-color);
@@ -301,7 +314,7 @@
   position: absolute;
   inset: 0;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0);
+  background: rgba(244, 201, 93, 0);
   transition: background var(--transition);
 }
 
@@ -310,7 +323,7 @@
 }
 
 .header-nav-link:hover::before {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(244, 201, 93, 0.1);
 }
 
 .header-nav-link.is-active {
@@ -318,14 +331,14 @@
 }
 
 .header-nav-link.is-active::before {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(244, 201, 93, 0.14);
 }
 
 .header-nav-link:focus-visible {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 2px rgba(244, 201, 93, 0.55);
 }
 
-/* Animated underline */
+/* Animated golden underline */
 .nav-link-underline {
   position: absolute;
   bottom: 4px;
@@ -335,6 +348,7 @@
   height: 2px;
   border-radius: 2px;
   background: var(--nav-underline);
+  box-shadow: 0 0 8px rgba(244, 201, 93, 0.5);
   transition: width var(--transition);
 }
 
@@ -344,7 +358,7 @@
 
 .header-nav-link.is-active .nav-link-underline {
   width: 55%;
-  background: #ffffff;
+  background: var(--gold-light);
 }
 
 /* ============================================================
@@ -357,7 +371,7 @@
   flex-shrink: 0;
 }
 
-/* -------- Appointment Button -------- */
+/* -------- Dark Golden Appointment Button -------- */
 .appointment-button {
   display: inline-flex;
   align-items: center;
@@ -368,7 +382,6 @@
   background: var(--btn-bg);
   color: var(--btn-color);
   text-decoration: none;
-  font-family: var(--font-family);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1px;
@@ -379,7 +392,7 @@
     transform var(--transition),
     color var(--transition);
   outline: none;
-  border: 1px solid rgba(3, 137, 195, 0.12);
+  border: 1px solid rgba(168, 117, 29, 0.45);
   position: relative;
   overflow: hidden;
 }
@@ -387,21 +400,28 @@
 .appointment-button::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(3, 137, 195, 0.06) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity var(--transition);
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transition: left 0.55s ease;
 }
 
 .appointment-button:hover {
-  background: var(--btn-hover-bg);
+  background: var(--btn-bg-hover);
   box-shadow: var(--btn-shadow-hover);
   transform: translateY(-1.5px);
-  color: #026fa0;
+  color: #140e02;
 }
 
 .appointment-button:hover::before {
-  opacity: 1;
+  left: 100%;
 }
 
 .appointment-button:active {
@@ -410,7 +430,7 @@
 }
 
 .appointment-button:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline: 2px solid rgba(255, 241, 184, 0.8);
   outline-offset: 2px;
 }
 
@@ -419,21 +439,19 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .appointment-label {
   position: relative;
-  font-family: var(--font-family);
 }
 
 .appointment-short {
   display: none;
-  font-family: var(--font-family);
 }
 
 .appointment-arrow {
-  opacity: 0.6;
+  opacity: 0.7;
   transition: opacity var(--transition), transform var(--transition);
 }
 
@@ -452,8 +470,8 @@
   width: 42px;
   height: 42px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(244, 201, 93, 0.1);
+  border: 1px solid rgba(244, 201, 93, 0.28);
   cursor: pointer;
   padding: 0;
   transition: background var(--transition), border-color var(--transition);
@@ -462,19 +480,19 @@
 }
 
 .menu-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(244, 201, 93, 0.18);
+  border-color: rgba(244, 201, 93, 0.45);
 }
 
 .menu-toggle:focus-visible {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 2px rgba(244, 201, 93, 0.6);
 }
 
 .toggle-bar {
   display: block;
   height: 2px;
   border-radius: 2px;
-  background: #ffffff;
+  background: var(--gold);
   transition: transform var(--transition), opacity var(--transition), width var(--transition);
 }
 
@@ -482,7 +500,6 @@
 .toggle-bar.middle { width: 14px; }
 .toggle-bar.bottom { width: 18px; }
 
-/* Animated state — X */
 .menu-toggle.is-open .toggle-bar.top {
   width: 20px;
   transform: translateY(7px) rotate(45deg);
@@ -499,7 +516,7 @@
 }
 
 /* ============================================================
-   MOBILE NAVIGATION OVERLAY
+   MOBILE NAVIGATION OVERLAY — dark green panel
    ============================================================ */
 .mobile-navigation {
   position: fixed;
@@ -507,7 +524,6 @@
   z-index: 1200;
   visibility: hidden;
   pointer-events: none;
-  font-family: var(--font-family);
 }
 
 .mobile-navigation.is-open {
@@ -519,7 +535,7 @@
 .mobile-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(2, 30, 50, 0.55);
+  background: rgba(1, 8, 5, 0.62);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border: none;
@@ -548,15 +564,13 @@
   overflow: hidden;
   transform: translateX(100%);
   transition: transform var(--transition-slow);
-  border-radius: 0;
-  font-family: var(--font-family);
 }
 
 .mobile-navigation.is-open .mobile-panel {
   transform: translateX(0);
 }
 
-/* Decorative glow orb */
+/* Decorative golden glow orb */
 .panel-glow {
   position: absolute;
   top: -80px;
@@ -566,7 +580,7 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(3, 137, 195, 0.12) 0%,
+    rgba(244, 201, 93, 0.14) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -578,11 +592,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 22px 18px;
-  border-bottom: 1px solid rgba(3, 137, 195, 0.1);
+  border-bottom: 1px solid rgba(244, 201, 93, 0.12);
   background: linear-gradient(
     135deg,
-    rgba(3, 137, 195, 0.06) 0%,
-    rgba(3, 137, 195, 0.02) 100%
+    rgba(244, 201, 93, 0.07) 0%,
+    rgba(244, 201, 93, 0.02) 100%
   );
   flex-shrink: 0;
 }
@@ -590,35 +604,33 @@
 .mobile-panel-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
   border-radius: var(--radius-sm);
   outline: none;
-  font-family: var(--font-family);
+}
+
+.mobile-brand-logo {
+  height: 38px;
+  max-height: 42px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  display: block;
+}
+
+.mobile-brand-logo-default {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .mobile-panel-brand .brand-mark {
   width: 38px;
   height: 38px;
-  background: linear-gradient(135deg, #0389C3 0%, #026fa0 100%);
+  background: linear-gradient(135deg, #ffe9a8 0%, #f4c95d 50%, #d9a63b 100%);
   border: none;
-  box-shadow: 0 4px 14px rgba(3, 137, 195, 0.35);
-}
-
-.mobile-panel-brand .brand-mark svg {
-  color: #ffffff;
-}
-
-.mobile-panel-brand .brand-name {
-  color: #0d2035;
-  font-size: 16px;
-  font-family: var(--font-family);
-}
-
-.mobile-panel-brand .brand-tagline {
-  color: #6b8fa8;
-  font-size: 9.5px;
-  font-family: var(--font-family);
+  color: #1c1405;
+  box-shadow: 0 4px 14px rgba(244, 201, 93, 0.35);
 }
 
 .mobile-close-button {
@@ -628,9 +640,9 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(3, 137, 195, 0.18);
-  background: rgba(3, 137, 195, 0.06);
-  color: #0389C3;
+  border: 1px solid rgba(244, 201, 93, 0.25);
+  background: rgba(244, 201, 93, 0.08);
+  color: var(--gold);
   cursor: pointer;
   transition: background var(--transition), border-color var(--transition), color var(--transition);
   outline: none;
@@ -638,13 +650,13 @@
 }
 
 .mobile-close-button:hover {
-  background: #0389C3;
-  color: #ffffff;
-  border-color: #0389C3;
+  background: var(--gold);
+  color: #04150d;
+  border-color: var(--gold);
 }
 
 .mobile-close-button:focus-visible {
-  box-shadow: 0 0 0 2px rgba(3, 137, 195, 0.4);
+  box-shadow: 0 0 0 2px rgba(244, 201, 93, 0.4);
 }
 
 /* -------- Section Label -------- */
@@ -656,19 +668,18 @@
 }
 
 .mobile-menu-label span {
-  font-family: var(--font-family);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: #8fafc6;
+  color: rgba(244, 201, 93, 0.5);
 }
 
 .mobile-menu-label::after {
   content: "";
   flex: 1;
   height: 1px;
-  background: rgba(3, 137, 195, 0.1);
+  background: rgba(244, 201, 93, 0.12);
 }
 
 /* -------- Nav Links -------- */
@@ -680,7 +691,7 @@
   gap: 2px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(3, 137, 195, 0.2) transparent;
+  scrollbar-color: rgba(244, 201, 93, 0.25) transparent;
 }
 
 .mobile-navigation-links::-webkit-scrollbar {
@@ -692,7 +703,7 @@
 }
 
 .mobile-navigation-links::-webkit-scrollbar-thumb {
-  background: rgba(3, 137, 195, 0.2);
+  background: rgba(244, 201, 93, 0.25);
   border-radius: 4px;
 }
 
@@ -704,7 +715,6 @@
   border-radius: var(--radius-md);
   text-decoration: none;
   color: var(--mobile-link-color);
-  font-family: var(--font-family);
   font-size: 14.5px;
   font-weight: 500;
   letter-spacing: 0.1px;
@@ -742,14 +752,14 @@
   transform: translateY(-50%) scaleY(0);
   width: 3px;
   height: 60%;
-  background: #0389C3;
+  background: var(--gold);
   border-radius: 0 3px 3px 0;
   transition: transform var(--transition);
 }
 
 .mobile-nav-link:hover {
   background: var(--mobile-link-hover-bg);
-  color: #0389C3;
+  color: var(--gold);
   transform: translateX(3px);
 }
 
@@ -761,7 +771,7 @@
   background: var(--mobile-link-active-bg);
   color: var(--mobile-link-active-color);
   font-weight: 600;
-  box-shadow: 0 2px 10px rgba(3, 137, 195, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .mobile-nav-link.is-active::before {
@@ -769,12 +779,11 @@
 }
 
 .mobile-nav-link:focus-visible {
-  box-shadow: 0 0 0 2px rgba(3, 137, 195, 0.35);
+  box-shadow: 0 0 0 2px rgba(244, 201, 93, 0.35);
 }
 
 .mobile-nav-text {
   flex: 1;
-  font-family: var(--font-family);
 }
 
 .mobile-nav-arrow {
@@ -785,19 +794,19 @@
 
 .mobile-nav-link:hover .mobile-nav-arrow,
 .mobile-nav-link.is-active .mobile-nav-arrow {
-  opacity: 0.8;
+  opacity: 0.85;
   transform: translateX(3px);
-  color: #0389C3;
+  color: var(--gold);
 }
 
 /* -------- Panel Footer -------- */
 .mobile-panel-footer {
   padding: 18px 16px 24px;
-  border-top: 1px solid rgba(3, 137, 195, 0.1);
+  border-top: 1px solid rgba(244, 201, 93, 0.12);
   background: linear-gradient(
     180deg,
-    rgba(3, 137, 195, 0.03) 0%,
-    rgba(3, 137, 195, 0.07) 100%
+    rgba(244, 201, 93, 0.04) 0%,
+    rgba(244, 201, 93, 0.09) 100%
   );
   display: flex;
   flex-direction: column;
@@ -818,9 +827,9 @@
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #0389C3 0%, #026fa0 100%);
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(3, 137, 195, 0.3);
+  background: linear-gradient(135deg, #ffe9a8 0%, #f4c95d 50%, #d9a63b 100%);
+  color: #1c1405;
+  box-shadow: 0 4px 12px rgba(244, 201, 93, 0.3);
   flex-shrink: 0;
 }
 
@@ -831,18 +840,16 @@
 }
 
 .footer-card-title {
-  font-family: var(--font-family);
   font-size: 13px;
   font-weight: 600;
-  color: #0d2035;
+  color: var(--gold-light);
   margin: 0;
   line-height: 1.3;
 }
 
 .footer-card-sub {
-  font-family: var(--font-family);
   font-size: 11.5px;
-  color: #7a9ab0;
+  color: rgba(255, 241, 184, 0.5);
   margin: 0;
 }
 
@@ -854,20 +861,19 @@
   width: 100%;
   padding: 13px 18px;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, #0389C3 0%, #026fa0 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, #f4c95d 0%, #d9a63b 55%, #b8842a 100%);
+  color: #1c1405;
   text-decoration: none;
-  font-family: var(--font-family);
   font-size: 13.5px;
   font-weight: 700;
   letter-spacing: 0.1px;
-  box-shadow: 0 4px 18px rgba(3, 137, 195, 0.4), 0 1px 0 rgba(255,255,255,0.15) inset;
+  box-shadow: 0 4px 18px rgba(244, 201, 93, 0.35), 0 1px 0 rgba(255, 241, 184, 0.5) inset;
   transition:
     transform var(--transition),
     box-shadow var(--transition),
     background var(--transition);
   outline: none;
-  border: none;
+  border: 1px solid rgba(168, 117, 29, 0.45);
   position: relative;
   overflow: hidden;
 }
@@ -882,15 +888,16 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.3),
     transparent
   );
   transition: left 0.5s ease;
 }
 
 .mobile-appointment-button:hover {
+  background: linear-gradient(135deg, #ffe9a8 0%, #f4c95d 45%, #d9a63b 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(3, 137, 195, 0.55), 0 1px 0 rgba(255,255,255,0.15) inset;
+  box-shadow: 0 8px 28px rgba(244, 201, 93, 0.5), 0 1px 0 rgba(255, 241, 184, 0.6) inset;
 }
 
 .mobile-appointment-button:hover::before {
@@ -902,7 +909,7 @@
 }
 
 .mobile-appointment-button:focus-visible {
-  box-shadow: 0 0 0 3px rgba(3, 137, 195, 0.4);
+  box-shadow: 0 0 0 3px rgba(244, 201, 93, 0.4);
 }
 
 /* ============================================================
@@ -919,6 +926,11 @@
   .header-nav-link {
     padding: 8px 10px;
     font-size: 13px;
+  }
+
+  .site-brand-logo {
+    max-width: 170px;
+    height: 40px;
   }
 }
 
@@ -971,12 +983,9 @@
     height: 38px;
   }
 
-  .brand-name {
-    font-size: 16px;
-  }
-
-  .brand-tagline {
-    font-size: 9px;
+  .site-brand-logo {
+    max-width: 140px;
+    height: 36px;
   }
 
   .appointment-button {
@@ -992,8 +1001,9 @@
     --panel-width: 100vw;
   }
 
-  .brand-tagline {
-    display: none;
+  .site-brand-logo {
+    max-width: 120px;
+    height: 32px;
   }
 
   .appointment-short {

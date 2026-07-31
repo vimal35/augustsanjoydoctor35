@@ -1,0 +1,416 @@
+/* ==========================================================================
+   AUREAL HEALTHCARE - WHY CHOOSE US (SCOPED & NO :root)
+   ========================================================================== */
+
+/* Main Section Scope Container */
+.why-choose-us-section {
+  /* Scoped Local Colors */
+  --why-bg-dark: #05140f;
+  --why-bg-card: rgba(11, 38, 28, 0.7);
+  --why-bg-card-hover: rgba(16, 52, 38, 0.9);
+  --why-border-gold: rgba(212, 175, 55, 0.25);
+  --why-border-active: #d4af37;
+
+  /* Rich Dark Gold Metallic Palette */
+  --why-gold-main: #c59938;
+  --why-gold-light: #f5e4a8;
+  --why-gold-dark: #8c6211;
+  --why-gold-gradient: linear-gradient(
+    135deg,
+    #d4af37 0%,
+    #e8c86b 30%,
+    #b8860b 70%,
+    #91681a 100%
+  );
+  --why-gold-hover: linear-gradient(
+    135deg,
+    #e8c86b 0%,
+    #ffffff 35%,
+    #c59938 70%,
+    #8c6211 100%
+  );
+
+  --why-text-white: #ffffff;
+  --why-text-offwhite: #e1e9e5;
+  --why-text-muted: #9eb1a8;
+
+  position: relative;
+  width: 100%;
+  background-color: var(--why-bg-dark);
+  color: var(--why-text-white);
+  padding: 100px 20px;
+  overflow: hidden;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Ambient Backdrops */
+.why-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+}
+
+.why-glow-1 {
+  width: 550px;
+  height: 550px;
+  top: 5%;
+  right: -100px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+}
+
+.why-glow-2 {
+  width: 600px;
+  height: 600px;
+  bottom: 0;
+  left: -150px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+}
+
+.why-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* Container */
+.why-container {
+  position: relative;
+  z-index: 5;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.why-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.why-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(11, 38, 28, 0.85);
+  border: 1px solid var(--why-border-gold);
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--why-gold-light);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.why-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--why-gold-main);
+  box-shadow: 0 0 8px var(--why-gold-main);
+}
+
+.why-main-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: var(--why-text-white);
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.why-subtitle {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: var(--why-text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Bento Grid Layout */
+.why-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.why-card {
+  position: relative;
+  background: var(--why-bg-card);
+  border: 1px solid var(--why-border-gold);
+  border-radius: 24px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.why-card-large {
+  grid-column: span 2;
+}
+
+.why-card-top-shine {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--why-gold-main), transparent);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  background: var(--why-bg-card-hover);
+  border-color: var(--why-border-active);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.why-card:hover .why-card-top-shine {
+  opacity: 1;
+}
+
+/* Card Elements */
+.why-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.why-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(197, 153, 56, 0.12);
+  border: 1px solid var(--why-border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--why-gold-main);
+  transition: all 0.35s ease;
+}
+
+.why-icon-box svg {
+  width: 26px;
+  height: 26px;
+}
+
+.why-card:hover .why-icon-box {
+  background: var(--why-gold-gradient);
+  color: #05140f;
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.why-pill-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--why-gold-light);
+  background: rgba(5, 20, 15, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.why-card-content {
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.why-card-sub {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--why-gold-light);
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.why-card-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--why-text-white);
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.why-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--why-text-muted);
+  margin: 0;
+}
+
+.why-card-footer {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.why-highlight-tag {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--why-text-offwhite);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.why-sparkle {
+  color: var(--why-gold-main);
+}
+
+/* Bottom Trust & CTA Banner */
+.why-trust-banner {
+  background: rgba(11, 38, 28, 0.85);
+  border: 1px solid var(--why-border-gold);
+  border-radius: 24px;
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.why-trust-stats {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  background: var(--why-gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--why-text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Rich Golden Button */
+.why-gold-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border-radius: 50px;
+  background: var(--why-gold-gradient);
+  color: #05140f;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(197, 153, 56, 0.35);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  white-space: nowrap;
+}
+
+.why-gold-btn:hover {
+  background: var(--why-gold-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+}
+
+.btn-arrow {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.why-gold-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .why-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-card-large {
+    grid-column: span 2;
+  }
+
+  .why-trust-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .why-trust-stats {
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 640px) {
+  .why-choose-us-section {
+    padding: 60px 16px;
+  }
+
+  .why-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .why-card-large {
+    grid-column: span 1;
+  }
+
+  .why-trust-stats {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  .why-cta-wrapper {
+    width: 100%;
+  }
+
+  .why-gold-btn {
+    width: 100%;
+    padding: 14px 24px;
+  }
+}

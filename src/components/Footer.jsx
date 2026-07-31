@@ -123,7 +123,7 @@ const Footer = () => {
         ease: "back.out(2.5)",
       });
 
-      // Brand text — slide left
+      // Brand text — slide left (kept for structure; content now uses original logo image)
       brandTl.from(
         ".footer-brand-content",
         {
@@ -799,22 +799,11 @@ const Footer = () => {
           <div className="footer-column footer-brand-column">
             <a href="/" className="footer-brand" ref={brandRef}>
               <div className="footer-brand-mark">
-                <svg
-                  width="26"
-                  height="26"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
-              </div>
-              <div className="footer-brand-content">
-                <span className="footer-brand-name">Aureal</span>
-                <span className="footer-brand-tagline">Clinical Care</span>
+                <img
+                  src="/logo.png"
+                  alt="Aureal Clinical Care"
+                  className="footer-brand-logo"
+                />
               </div>
             </a>
 
