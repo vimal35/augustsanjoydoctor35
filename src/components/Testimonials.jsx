@@ -85,7 +85,6 @@ const Testimonials = () => {
   const [activeVideo, setActiveVideo] = useState(0);
   const [playingId, setPlayingId] = useState(null);
   const textAutoRef = useRef(null);
-  const [textIndex, setTextIndex] = useState(0);
 
   // Duplicate text reviews for seamless loop
   const loopedText = [...textReviews, ...textReviews];
@@ -163,6 +162,28 @@ const Testimonials = () => {
     if (reduce) return;
 
     const ctx = gsap.context(() => {
+      // Subtle background parallax effect
+      gsap.to(".tst-orb-1", {
+        yPercent: 40,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        }
+      });
+      gsap.to(".tst-orb-2", {
+        yPercent: -40,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        }
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -172,72 +193,91 @@ const Testimonials = () => {
       });
 
       tl.from(".tst-badge", {
-        y: 30,
+        y: 40,
         opacity: 0,
         scale: 0.8,
-        duration: 0.7,
+        rotationX: 45,
+        duration: 0.8,
         ease: "back.out(2)",
       });
+      
       tl.from(
         ".tst-title .tst-word span",
         {
           yPercent: 120,
           opacity: 0,
-          rotateX: -40,
-          duration: 0.85,
-          stagger: 0.08,
-          ease: "power4.out",
+          rotationZ: 8,
+          rotationX: -60,
+          duration: 1,
+          stagger: 0.05,
+          ease: "expo.out",
         },
-        "-=0.3"
-      );
-      tl.from(
-        ".tst-subtitle",
-        { y: 25, opacity: 0, filter: "blur(6px)", duration: 0.7, ease: "power3.out" },
         "-=0.4"
       );
+      
+      tl.from(
+        ".tst-subtitle",
+        { y: 30, opacity: 0, filter: "blur(10px)", duration: 1, ease: "power3.out" },
+        "-=0.6"
+      );
 
-      gsap.from(".tst-text-section .tst-section-head", {
-        scrollTrigger: {
-          trigger: ".tst-text-section",
-          start: "top 82%",
-          toggleActions: "play none none reverse",
-        },
-        x: -40,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
+      gsap.utils.toArray(".tst-section-head").forEach((head) => {
+        gsap.from(head, {
+          scrollTrigger: {
+            trigger: head,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+          x: -50,
+          opacity: 0,
+          duration: 1,
+          ease: "power4.out",
+        });
       });
 
-      gsap.from(".tst-video-section .tst-section-head", {
+      gsap.from(".tst-text-track", {
         scrollTrigger: {
-          trigger: ".tst-video-section",
-          start: "top 82%",
+          trigger: ".tst-text-section",
+          start: "top 80%",
           toggleActions: "play none none reverse",
         },
-        x: -40,
         opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        y: 40,
+        duration: 1.2,
+        ease: "power3.out"
+      });
+
+      gsap.from(".tst-video-track", {
+        scrollTrigger: {
+          trigger: ".tst-video-section",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        y: 40,
+        duration: 1.2,
+        ease: "power3.out"
       });
 
       gsap.to(".tst-orb-1", {
-        x: 40,
-        y: -30,
-        scale: 1.1,
-        duration: 9,
+        x: 60,
+        y: -40,
+        scale: 1.15,
+        duration: 12,
         ease: "sine.inOut",
         yoyo: true,
         repeat: -1,
       });
+      
       gsap.to(".tst-orb-2", {
-        x: -35,
-        y: 35,
-        scale: 1.08,
-        duration: 11,
+        x: -50,
+        y: 50,
+        scale: 1.1,
+        duration: 14,
         ease: "sine.inOut",
         yoyo: true,
         repeat: -1,
-        delay: 1,
+        delay: 2,
       });
     }, sectionRef);
 

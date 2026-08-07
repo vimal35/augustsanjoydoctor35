@@ -1,19 +1,21 @@
 /* ==========================================================================
    AUREAL HEALTHCARE - HERO BANNER CAROUSEL (SCOPED & NO :root)
+   PREMIUM CINEMATIC BLACK EDITION — SOLID GOLD ACCENTS
    ========================================================================== */
 
 .hero-banner-section {
   /* Scoped Local Variables */
-  --hb-bg-dark: #05140f;
+  --hb-bg-dark: #060606;
   --hb-border-gold: rgba(212, 175, 55, 0.35);
 
-  --hb-gold-main: #c59938;
-  --hb-gold-light: #f5e4a8;
-  --hb-gold-gradient: linear-gradient(135deg, #d4af37 0%, #e8c86b 30%, #b8860b 70%, #91681a 100%);
-  --hb-gold-hover: linear-gradient(135deg, #e8c86b 0%, #ffffff 35%, #c59938 70%, #8c6211 100%);
+  --hb-gold-main: #d4af37;
+  --hb-gold-solid: #d4af37;
+  --hb-gold-solid-hover: #b8901f;
+  --hb-gold-light: #f3dd9c;
+  --hb-gold-dim: rgba(212, 175, 55, 0.16);
 
   --hb-text-white: #ffffff;
-  --hb-text-offwhite: #e1e9e5;
+  --hb-text-offwhite: #d8d8d6;
 
   position: relative;
   width: 100%;
@@ -56,7 +58,7 @@
   background-position: center;
   background-repeat: no-repeat;
   transform: scale(1.12);
-  filter: brightness(0.72) contrast(1.05);
+  filter: brightness(0.6) contrast(1.08) saturate(0.92);
 }
 
 .hb-bg-slide.active .hb-bg-image {
@@ -68,31 +70,52 @@
   to { transform: scale(1); }
 }
 
-/* Dark Green Overlays for Text Readability */
+/* ---------- Pure Black Cinematic Overlays (no green tint) ---------- */
 .hb-overlay-dark {
   position: absolute;
   inset: 0;
-  background: rgba(5, 20, 15, 0.45);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 3;
 }
 
 .hb-overlay-gradient {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 18% 50%, rgba(5, 20, 15, 0.88) 0%, rgba(5, 20, 15, 0.35) 55%, transparent 80%),
-    linear-gradient(to top, #05140f 0%, transparent 45%),
-    linear-gradient(to bottom, rgba(5, 20, 15, 0.55) 0%, transparent 30%);
+ 
   z-index: 4;
 }
 
 .hb-grid-pattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(212, 175, 55, 0.07) 1px, transparent 1px);
-  background-size: 36px 36px;
+  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+  background-size: 38px 38px;
   z-index: 5;
   pointer-events: none;
+}
+
+/* ---------- Corner Frame Accents (unique editorial touch) ---------- */
+.hb-corner {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.hb-corner-tl {
+  top: 28px;
+  left: 28px;
+  border-top: 2px solid var(--hb-gold-main);
+  border-left: 2px solid var(--hb-gold-main);
+}
+
+.hb-corner-br {
+  bottom: 128px;
+  right: 28px;
+  border-bottom: 2px solid var(--hb-gold-main);
+  border-right: 2px solid var(--hb-gold-main);
 }
 
 /* ---------- Left / Right Golden Arrows ---------- */
@@ -101,10 +124,10 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: rgba(5, 20, 15, 0.55);
+  width: 52px;
+  height: 52px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.5);
   border: 1.5px solid var(--hb-border-gold);
   color: var(--hb-text-white);
   display: flex;
@@ -117,8 +140,8 @@
 }
 
 .hb-arrow svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   transition: transform 0.3s ease;
 }
 
@@ -126,10 +149,10 @@
 .hb-arrow-right { right: 28px; }
 
 .hb-arrow:hover {
-  background: var(--hb-gold-gradient);
-  color: #05140f;
+  background: var(--hb-gold-solid);
+  color: #060606;
   border-color: var(--hb-gold-main);
-  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 6px 22px rgba(212, 175, 55, 0.4);
 }
 
 .hb-arrow-left:hover svg { transform: translateX(-3px); }
@@ -167,27 +190,33 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Tagline Badge */
+/* Tagline Badge — restyled as a minimal label with rule line */
 .hb-tagline {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
-  background: rgba(11, 38, 28, 0.7);
-  border: 1px solid var(--hb-border-gold);
-  border-radius: 50px;
+  gap: 12px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 1.6px;
+  letter-spacing: 2.2px;
   text-transform: uppercase;
   color: var(--hb-gold-light);
-  backdrop-filter: blur(10px);
-  margin-bottom: 26px;
+  margin-bottom: 24px;
+}
+
+.hb-tagline-line {
+  width: 34px;
+  height: 2px;
+  background: var(--hb-gold-main);
+  display: inline-block;
 }
 
 .hb-tagline-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--hb-gold-main);
   box-shadow: 0 0 10px var(--hb-gold-main);
@@ -202,26 +231,27 @@
 
 /* Main Heading */
 .hb-title {
-  font-size: clamp(2.4rem, 5.2vw, 4.4rem);
+  font-size: clamp(2.4rem, 5.2vw, 4.35rem);
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
   color: var(--hb-text-white);
   margin: 0 0 22px 0;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.7);
 }
 
 /* Description */
 .hb-description {
-  font-size: clamp(1rem, 1.35vw, 1.18rem);
-  line-height: 1.7;
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.75;
   color: var(--hb-text-offwhite);
-  max-width: 680px;
+  max-width: 660px;
   margin: 0 0 38px 0;
-  opacity: 0.92;
+  opacity: 0.9;
+  font-weight: 400;
 }
 
-/* ---------- Golden Buttons ---------- */
+/* ---------- Solid Gold Buttons (no gradients) ---------- */
 .hb-buttons {
   display: flex;
   align-items: center;
@@ -235,23 +265,25 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 16px 36px;
-  font-size: 1rem;
-  font-weight: 800;
-  border-radius: 50px;
+  padding: 16px 34px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  border-radius: 6px;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   box-sizing: border-box;
+  text-transform: uppercase;
+  font-size: 0.82rem;
 }
 
-/* Primary Golden */
+/* Primary — Solid Golden Yellow */
 .hb-btn-primary {
-  background: var(--hb-gold-gradient);
-  color: #05140f;
-  box-shadow: 0 8px 26px rgba(197, 153, 56, 0.4),
-              inset 0 1px 1px rgba(255, 255, 255, 0.7);
+  background-color: var(--hb-gold-solid);
+  color: #0a0a0a;
+  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.28);
 }
 
 .hb-btn-primary::before {
@@ -261,36 +293,37 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
   transition: left 0.6s ease;
 }
 
 .hb-btn-primary:hover::before { left: 100%; }
 
 .hb-btn-primary:hover {
-  background: var(--hb-gold-hover);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.55);
+  background-color: var(--hb-gold-solid-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.4);
 }
 
-/* Outline Golden */
+/* Outline — transparent, solid gold border, gold fill on hover */
 .hb-btn-outline {
-  background: rgba(5, 20, 15, 0.45);
+  background: rgba(0, 0, 0, 0.35);
   color: var(--hb-text-white);
-  border: 2px solid var(--hb-gold-main);
+  border: 1.5px solid var(--hb-gold-main);
   backdrop-filter: blur(10px);
 }
 
 .hb-btn-outline:hover {
-  background: var(--hb-gold-gradient);
-  color: #05140f;
+  background-color: var(--hb-gold-solid);
+  color: #0a0a0a;
+  border-color: var(--hb-gold-solid);
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 10px 24px rgba(212, 175, 55, 0.32);
 }
 
 .hb-btn-arrow {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   transition: transform 0.3s ease;
 }
 
@@ -305,49 +338,55 @@
   z-index: 15;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 26px;
   padding: 22px 90px;
-  background: linear-gradient(to top, rgba(5, 20, 15, 0.85), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .hb-counter {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 8px;
   font-weight: 800;
   flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .hb-counter-current {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--hb-gold-main);
+  letter-spacing: 0.5px;
 }
 
 .hb-counter-sep {
-  color: rgba(255, 255, 255, 0.4);
+  width: 16px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+  display: inline-block;
 }
 
 .hb-counter-total {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* Auto Progress Bar (not clickable dots) */
 .hb-progress-track {
   flex-grow: 1;
-  height: 3px;
+  height: 2px;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
+  border-radius: 2px;
   overflow: hidden;
 }
 
 .hb-progress-fill {
   height: 100%;
   width: 0%;
-  background: var(--hb-gold-gradient);
-  border-radius: 4px;
+  background-color: var(--hb-gold-solid);
+  border-radius: 2px;
   animation: hbProgress linear forwards;
-  box-shadow: 0 0 10px var(--hb-gold-main);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
 }
 
 .hb-progress-fill.paused {
@@ -364,19 +403,19 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.55);
   flex-shrink: 0;
 }
 
 .hb-mouse {
-  width: 20px;
-  height: 32px;
-  border: 2px solid rgba(255, 255, 255, 0.45);
-  border-radius: 12px;
+  width: 18px;
+  height: 30px;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   padding-top: 6px;
@@ -385,7 +424,7 @@
 
 .hb-mouse-wheel {
   width: 3px;
-  height: 7px;
+  height: 6px;
   border-radius: 3px;
   background: var(--hb-gold-main);
   animation: hbWheel 1.6s ease-in-out infinite;
@@ -402,33 +441,49 @@
    ========================================================================== */
 
 @media (max-width: 1024px) {
-  .hb-container { padding: 0 70px; }
-  .hb-bottom-bar { padding: 20px 70px; }
+  .hb-container { padding: 0 60px; }
+  .hb-bottom-bar { padding: 20px 60px; }
+  .hb-corner { width: 50px; height: 50px; }
 }
 
 @media (max-width: 768px) {
-  .hb-container { padding: 0 24px; align-items: flex-end; padding-bottom: 130px; }
-  .hb-arrow { width: 44px; height: 44px; }
+  .hb-container { padding: 0 24px; align-items: flex-end; padding-bottom: 132px; }
+  .hb-arrow { width: 42px; height: 42px; }
   .hb-arrow-left { left: 14px; }
   .hb-arrow-right { right: 14px; }
   .hb-bottom-bar { padding: 18px 24px; gap: 16px; }
   .hb-scroll-hint { display: none; }
-  .hb-tagline { font-size: 0.7rem; padding: 6px 14px; margin-bottom: 18px; }
-  .hb-description { margin-bottom: 28px; }
+  .hb-tagline { font-size: 0.68rem; margin-bottom: 16px; gap: 8px; }
+  .hb-tagline-line { width: 22px; }
+  .hb-description { margin-bottom: 26px; }
+  .hb-corner { display: none; }
 }
 
 @media (max-width: 560px) {
-  .hero-banner-section { min-height: 560px; }
-  .hb-container { padding: 0 18px; padding-bottom: 120px; }
-  .hb-title { font-size: 2.1rem; }
-  .hb-description { font-size: 0.95rem; }
+  .hero-banner-section { min-height: 580px; }
+  .hb-container { padding: 0 18px; padding-bottom: 118px; }
+  .hb-title { font-size: 2rem; margin-bottom: 16px; }
+  .hb-description { font-size: 0.92rem; line-height: 1.65; }
   .hb-buttons { flex-direction: column; width: 100%; gap: 12px; }
-  .hb-btn { width: 100%; padding: 14px 24px; }
-  .hb-arrow { top: auto; bottom: 86px; transform: none; width: 40px; height: 40px; }
-  .hb-arrow-left { left: 18px; }
-  .hb-arrow-right { right: 18px; }
-  .hb-bottom-bar { padding: 16px 18px; }
-  .hb-counter-current { font-size: 1.2rem; }
+  .hb-btn { width: 100%; padding: 14px 22px; font-size: 0.78rem; }
+  .hb-arrow { top: auto; bottom: 84px; transform: none; width: 38px; height: 38px; }
+  .hb-arrow-left { left: 16px; }
+  .hb-arrow-right { right: 16px; }
+  .hb-bottom-bar { padding: 15px 16px; gap: 12px; }
+  .hb-counter-current { font-size: 1.1rem; }
+  .hb-counter-sep { width: 10px; }
+}
+
+@media (max-width: 380px) {
+  .hb-title { font-size: 1.7rem; }
+  .hb-tagline span:last-child { display: inline-block; max-width: 180px; }
+}
+
+@media (max-height: 620px) and (orientation: landscape) {
+  .hero-banner-section { min-height: 460px; height: 100vh; }
+  .hb-container { padding-bottom: 20px; align-items: center; }
+  .hb-bottom-bar { padding: 12px 40px; }
+  .hb-corner { display: none; }
 }
 
 /* Accessibility */

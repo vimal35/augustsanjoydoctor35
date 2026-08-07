@@ -1,99 +1,35 @@
 /* ============================================================
-   HEALTHCARE PROGRAMS — AUREAL CLINICAL CARE
-   Dark Green BG · White Text · Golden Accents
+   HEALTHCARE PROGRAMS
+   Static design — no GSAP, animations, transitions or movement
    ============================================================ */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
+/* ============================================================
+   SECTION
+   ============================================================ */
+
 .prg-section {
   position: relative;
+  width: 100%;
+  padding: 92px 0 110px;
   overflow: hidden;
-  padding: 100px 0;
-  background: linear-gradient(135deg, #021a10 0%, #041e14 45%, #06341f 100%);
+  background-color: #ffffff;
+  color: #111111;
   font-family: "Poppins", sans-serif;
 }
 
-.prg-section * {
-  font-family: "Poppins", sans-serif;
+.prg-section,
+.prg-section *,
+.prg-section *::before,
+.prg-section *::after {
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-/* ============================================================
-   DECORATIVE BACKGROUND
-   ============================================================ */
-.prg-decoration {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.prg-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  will-change: transform;
-}
-
-.prg-orb-1 {
-  top: -120px;
-  right: -90px;
-  width: 440px;
-  height: 440px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.24), transparent 70%);
-  opacity: 0.5;
-}
-
-.prg-orb-2 {
-  bottom: -150px;
-  left: -110px;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(10, 77, 44, 0.8), transparent 70%);
-  opacity: 0.7;
-}
-
-.prg-grid-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 55px 55px;
-  mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, black 20%, transparent 78%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, black 20%, transparent 78%);
-  opacity: 0.45;
-  animation: prg-grid-drift 26s linear infinite;
-}
-
-@keyframes prg-grid-drift {
-  from { background-position: 0 0, 0 0; }
-  to   { background-position: 55px 55px, 55px 55px; }
-}
-
-/* Rising gold particles */
-.prg-particle {
-  position: absolute;
-  border-radius: 50%;
-  background: #f5d572;
-  box-shadow: 0 0 10px 2px rgba(245, 213, 114, 0.5);
-  opacity: 0;
-  animation: prg-rise linear infinite;
-  will-change: transform, opacity;
-}
-
-@keyframes prg-rise {
-  0%   { transform: translateY(0) scale(1); opacity: 0; }
-  12%  { opacity: 0.9; }
-  85%  { opacity: 0.5; }
-  100% { transform: translateY(-160px) scale(0.4); opacity: 0; }
-}
-
-/* ============================================================
-   CONTAINER
-   ============================================================ */
 .prg-container {
   position: relative;
-  z-index: 2;
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 32px;
@@ -102,489 +38,690 @@
 /* ============================================================
    HEADER
    ============================================================ */
+
 .prg-header {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 68px;
   text-align: center;
-  margin-bottom: 56px;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .prg-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 9px;
-  padding: 9px 20px;
-  border-radius: 50px;
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: #f5d572;
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
+  min-height: 38px;
+  margin-bottom: 24px;
+  padding: 8px 20px;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 999px;
+  background-color: #fffdf7;
+  color: #176143;
+  box-shadow: 0 3px 12px rgba(160, 124, 27, 0.07);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1.55px;
   text-transform: uppercase;
-  margin-bottom: 22px;
-  animation: prg-badge-glow 3.2s ease-in-out infinite;
 }
 
-@keyframes prg-badge-glow {
-  0%, 100% { box-shadow: 0 0 0 rgba(212, 175, 55, 0); }
-  50%      { box-shadow: 0 0 26px rgba(212, 175, 55, 0.3); }
-}
-
-.prg-badge-dot {
-  position: relative;
-  width: 7px;
-  height: 7px;
+.prg-badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
   border-radius: 50%;
-  background: #f5d572;
-  flex-shrink: 0;
+  background-color: #d4af37;
+  color: #ffffff;
 }
 
-.prg-badge-dot::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px solid rgba(245, 213, 114, 0.7);
-  animation: prg-ping 1.8s ease-out infinite;
-}
-
-@keyframes prg-ping {
-  0%   { transform: scale(0.6); opacity: 1; }
-  100% { transform: scale(1.9); opacity: 0; }
+.prg-badge-icon svg {
+  width: 12px;
+  height: 12px;
 }
 
 .prg-title {
-  font-size: clamp(28px, 4vw, 48px);
+  margin: 0 0 21px;
+  font-size: clamp(36px, 4.6vw, 58px);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.8px;
-  color: #ffffff;
-  margin: 0 0 18px;
-  perspective: 800px;
+  line-height: 1.02;
+  letter-spacing: -1.8px;
 }
 
-.prg-word {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-  margin-right: 0.28em;
+.prg-title span,
+.prg-title strong {
+  display: block;
 }
 
-.prg-word span {
-  display: inline-block;
-  will-change: transform;
+.prg-title span {
+  color: #444444;
+  font-weight: 800;
 }
 
-/* Shimmering gold last word */
-.prg-word:last-child span {
-  background: linear-gradient(120deg, #d4af37 15%, #f5d572 35%, #fff6d8 50%, #f5d572 65%, #d4af37 85%);
-  background-size: 220% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: prg-shimmer 4.5s linear infinite;
-}
-
-@keyframes prg-shimmer {
-  to { background-position: 220% center; }
+.prg-title strong {
+  color: #050505;
+  font-weight: 800;
 }
 
 .prg-subtitle {
+  max-width: 750px;
+  margin: 0 auto;
+  color: #737373;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.75);
-  margin: 0;
 }
 
 /* ============================================================
-   GRID
+   PROGRAM GRID
    ============================================================ */
+
 .prg-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 32px;
 }
 
 /* ============================================================
-   CARD  (transforms owned by GSAP — CSS only colors/shadows)
+   PROGRAM CARD
    ============================================================ */
+
 .prg-card {
   position: relative;
   display: flex;
+  min-width: 0;
   flex-direction: column;
-  border-radius: 22px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.18);
-  backdrop-filter: blur(10px);
-  transition: border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+  border: 1px solid #cfe0d7;
+  border-radius: 22px;
+  background-color: #ffffff;
+  box-shadow:
+    0 10px 30px rgba(18, 74, 51, 0.08),
+    0 2px 5px rgba(0, 0, 0, 0.035);
 }
 
 .prg-card:hover {
-  border-color: rgba(212, 175, 55, 0.55);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4),
-    0 0 44px rgba(212, 175, 55, 0.08);
+  border-color: #a8c9b9;
+  box-shadow:
+    0 14px 34px rgba(18, 74, 51, 0.12),
+    0 3px 7px rgba(0, 0, 0, 0.04);
 }
 
-/* Mouse-tracking gold spotlight */
-.prg-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background: radial-gradient(
-    340px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(245, 213, 114, 0.14),
-    transparent 65%
-  );
-  opacity: 0;
-  transition: opacity 0.45s ease;
-  pointer-events: none;
-}
+/* ============================================================
+   CARD IMAGE
+   ============================================================ */
 
-.prg-card:hover::before {
-  opacity: 1;
-}
-
-/* Gold top line on hover */
-.prg-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  z-index: 4;
-  background: linear-gradient(90deg, transparent, #f5d572, transparent);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.prg-card:hover::after {
-  opacity: 1;
-}
-
-/* Shine sweep */
-.prg-card-shine {
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 55%;
-  height: 100%;
-  z-index: 2;
-  background: linear-gradient(
-    105deg,
-    transparent 20%,
-    rgba(255, 255, 255, 0.09) 50%,
-    transparent 80%
-  );
-  transform: skewX(-18deg);
-  transition: left 1s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-}
-
-.prg-card:hover .prg-card-shine {
-  left: 135%;
-}
-
-/* ─── Media ─── */
 .prg-card-media {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 260px;
+  flex-shrink: 0;
   overflow: hidden;
+  background-color: #eeeeee;
 }
 
-.prg-card-img {
+.prg-card-image {
   position: absolute;
   inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
+  border: 0;
   object-fit: cover;
-  will-change: transform;
+  object-position: center;
 }
 
 .prg-card-media-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(2, 26, 16, 0.95) 0%,
-    rgba(2, 26, 16, 0.3) 50%,
-    rgba(2, 26, 16, 0.5) 100%
-  );
+  background:
+    linear-gradient(
+      to top,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.94) 5%,
+      rgba(255, 255, 255, 0.52) 25%,
+      rgba(255, 255, 255, 0.1) 52%,
+      rgba(255, 255, 255, 0) 75%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0)
+    );
+  pointer-events: none;
 }
+
+/* ============================================================
+   IMAGE LABEL
+   ============================================================ */
 
 .prg-card-tag {
   position: absolute;
-  top: 16px;
-  left: 16px;
-  padding: 6px 14px;
-  border-radius: 50px;
-  background: rgba(212, 175, 55, 0.92);
-  color: #021a10;
-  font-size: 11px;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 29px;
+  padding: 7px 15px;
+  border: 1px solid rgba(212, 175, 55, 0.48);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.96);
+  color: #176143;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.8px;
+  line-height: 1;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  backdrop-filter: blur(4px);
-  transition: background-color 0.4s ease;
+  white-space: nowrap;
 }
 
 .prg-card:hover .prg-card-tag {
-  background: #f5d572;
+  border-color: #d4af37;
+  background-color: #d4af37;
+  color: #123f2d;
 }
+
+/* ============================================================
+   IMAGE ICON
+   ============================================================ */
 
 .prg-card-icon {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  display: flex;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: #f5d572;
-  backdrop-filter: blur(10px);
-  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+  background-color: rgba(255, 255, 255, 0.96);
+  color: #176143;
+  box-shadow: 0 5px 15px rgba(18, 74, 51, 0.1);
+}
+
+.prg-card-icon svg {
+  width: 21px;
+  height: 21px;
 }
 
 .prg-card:hover .prg-card-icon {
-  background: linear-gradient(135deg, #f5d572, #d4af37);
-  color: #021a10;
-  border-color: transparent;
+  border-color: #176143;
+  background-color: #176143;
+  color: #f0ce64;
 }
 
-/* Gentle idle float on the icon glyph */
-.prg-card-icon svg {
-  animation: prg-icon-float 3.6s ease-in-out infinite;
-}
-
-@keyframes prg-icon-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-3px); }
-}
+/* ============================================================
+   IMAGE STAT BOX
+   ============================================================ */
 
 .prg-card-stat {
   position: absolute;
+  right: 18px;
   bottom: 16px;
-  right: 16px;
+  z-index: 2;
   display: flex;
+  min-width: 112px;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2px;
-  padding: 8px 14px;
-  border-radius: 12px;
-  background: rgba(2, 26, 16, 0.6);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  backdrop-filter: blur(8px);
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.prg-card:hover .prg-card-stat {
-  border-color: rgba(245, 213, 114, 0.7);
-  box-shadow: 0 0 26px rgba(212, 175, 55, 0.35);
+  justify-content: center;
+  gap: 4px;
+  padding: 11px 15px;
+  border: 1px solid rgba(212, 175, 55, 0.48);
+  border-radius: 13px;
+  background-color: rgba(255, 255, 255, 0.97);
+  box-shadow:
+    0 7px 20px rgba(18, 74, 51, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .prg-stat-value {
-  font-size: 22px;
+  color: #176143;
+  font-size: 24px;
   font-weight: 800;
-  color: #f5d572;
   line-height: 1;
-  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.6px;
 }
 
 .prg-stat-label {
-  font-size: 10px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.3px;
+  color: #777777;
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-/* ─── Body ─── */
+/* ============================================================
+   CARD CONTENT
+   ============================================================ */
+
 .prg-card-body {
+  position: relative;
+  z-index: 3;
   display: flex;
-  flex-direction: column;
-  padding: 26px 26px 28px;
   flex: 1;
+  flex-direction: column;
+  padding: 27px 27px 29px;
+  background-color: #ffffff;
 }
 
 .prg-card-title {
+  margin: 0 0 13px;
+  color: #111111;
   font-size: 20px;
   font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 12px;
-  letter-spacing: -0.3px;
+  line-height: 1.35;
+  letter-spacing: -0.45px;
 }
 
-.prg-card-desc {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.78);
-  margin: 0 0 20px;
+.prg-card-description {
   flex: 1;
+  margin: 0 0 21px;
+  color: #747474;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.82;
 }
+
+/* ============================================================
+   CARD META
+   ============================================================ */
 
 .prg-card-meta {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 16px 0;
-  margin-bottom: 20px;
-  border-top: 1px solid rgba(212, 175, 55, 0.15);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  gap: 11px;
+  margin-bottom: 21px;
+  padding: 17px 0;
+  border-top: 1px solid #d9e6df;
+  border-bottom: 1px solid #d9e6df;
 }
 
 .prg-meta-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  min-width: 0;
+  color: #747474;
+  font-size: 12.5px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
 }
 
 .prg-meta-item svg {
-  color: #f5d572;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  color: #d4af37;
+}
+
+/* ============================================================
+   LEARN MORE BUTTON
+   ============================================================ */
+
+.prg-card-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-self: flex-start;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 25px;
+  border: 1.5px solid #77a58f;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #176143;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.25px;
+  text-decoration: none;
+}
+
+.prg-card-button svg {
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
 }
 
-/* ─── Button ─── */
-.prg-card-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  align-self: flex-start;
-  padding: 13px 26px;
-  border-radius: 50px;
-  background: transparent;
-  border: 1.5px solid rgba(212, 175, 55, 0.55);
-  color: #f5d572;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+.prg-card-button:hover {
+  border-color: #176143;
+  background-color: #176143;
+  color: #f2d16d;
 }
 
-.prg-card-btn span,
-.prg-btn-arrow {
-  position: relative;
-  z-index: 1;
-}
-
-.prg-card-btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(135deg, #f5d572, #d4af37);
-  transform: translateY(102%);
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.prg-card-btn:hover::before {
-  transform: translateY(0);
-}
-
-.prg-card-btn:hover {
-  color: #021a10;
-  border-color: transparent;
-  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
-}
-
-.prg-card-btn:focus-visible {
-  outline: 2px solid #f5d572;
-  outline-offset: 3px;
-}
-
-.prg-btn-arrow {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.prg-card-btn:hover .prg-btn-arrow {
-  transform: translateX(5px);
+.prg-card-button:focus-visible {
+  outline: 3px solid rgba(212, 175, 55, 0.48);
+  outline-offset: 4px;
 }
 
 /* ============================================================
-   RESPONSIVE — 900px (TABLET)
+   LARGE TABLET
    ============================================================ */
+
+@media (max-width: 1100px) {
+  .prg-section {
+    padding: 85px 0 95px;
+  }
+
+  .prg-container {
+    padding: 0 28px;
+  }
+
+  .prg-grid {
+    gap: 25px;
+  }
+
+  .prg-card-media {
+    height: 235px;
+  }
+
+  .prg-card-body {
+    padding: 25px 24px 27px;
+  }
+
+  .prg-card-title {
+    font-size: 19px;
+  }
+
+  .prg-card-description {
+    font-size: 13px;
+  }
+}
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
 @media (max-width: 900px) {
-  .prg-grid { gap: 22px; }
-  .prg-card-media { height: 220px; }
-  .prg-card-body { padding: 22px 22px 24px; }
-  .prg-card-title { font-size: 18px; }
+  .prg-section {
+    padding: 78px 0 85px;
+  }
+
+  .prg-header {
+    margin-bottom: 52px;
+  }
+
+  .prg-grid {
+    gap: 22px;
+  }
+
+  .prg-card-media {
+    height: 215px;
+  }
+
+  .prg-card-body {
+    padding: 23px 21px 25px;
+  }
+
+  .prg-card-stat {
+    right: 15px;
+    bottom: 14px;
+    min-width: 100px;
+    padding: 10px 13px;
+  }
+
+  .prg-stat-value {
+    font-size: 21px;
+  }
+
+  .prg-card-tag {
+    top: 15px;
+    left: 15px;
+  }
+
+  .prg-card-icon {
+    top: 15px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* ============================================================
-   RESPONSIVE — 720px (SMALL TABLET)
+   SMALL TABLET AND MOBILE
    ============================================================ */
-@media (max-width: 720px) {
+
+@media (max-width: 768px) {
+  .prg-container {
+    padding: 0 22px;
+  }
+
+  .prg-header {
+    max-width: 600px;
+    margin-bottom: 45px;
+  }
+
+  .prg-title {
+    font-size: clamp(34px, 8vw, 48px);
+  }
+
+  .prg-subtitle {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
   .prg-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
-    max-width: 460px;
+    max-width: 600px;
     margin: 0 auto;
+    gap: 28px;
+  }
+
+  .prg-card-media {
+    height: 250px;
+  }
+
+  .prg-card-body {
+    padding: 26px 25px 28px;
+  }
+
+  .prg-card-description {
+    font-size: 13.5px;
   }
 }
 
 /* ============================================================
-   RESPONSIVE — 640px (MOBILE)
+   MOBILE
    ============================================================ */
-@media (max-width: 640px) {
-  .prg-section { padding: 70px 0; }
-  .prg-container { padding: 0 18px; }
-  .prg-header { margin-bottom: 40px; }
-  .prg-badge { font-size: 11px; padding: 8px 16px; letter-spacing: 1px; }
-  .prg-subtitle { font-size: 14px; }
-  .prg-card-media { height: 210px; }
-  .prg-card-title { font-size: 18px; }
-  .prg-card-desc { font-size: 13.5px; }
-  .prg-orb-1, .prg-orb-2 { width: 280px; height: 280px; }
+
+@media (max-width: 560px) {
+  .prg-section {
+    padding: 64px 0 70px;
+  }
+
+  .prg-container {
+    padding: 0 18px;
+  }
+
+  .prg-header {
+    margin-bottom: 38px;
+  }
+
+  .prg-badge {
+    min-height: 34px;
+    margin-bottom: 20px;
+    padding: 7px 15px;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+  }
+
+  .prg-badge-icon {
+    width: 19px;
+    height: 19px;
+    flex-basis: 19px;
+  }
+
+  .prg-title {
+    margin-bottom: 18px;
+    font-size: clamp(31px, 10vw, 40px);
+    letter-spacing: -1.2px;
+  }
+
+  .prg-subtitle {
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+
+  .prg-card {
+    border-radius: 18px;
+  }
+
+  .prg-card-media {
+    height: 220px;
+  }
+
+  .prg-card-body {
+    padding: 24px 21px 25px;
+  }
+
+  .prg-card-title {
+    font-size: 18px;
+  }
+
+  .prg-card-description {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .prg-card-button {
+    width: 100%;
+    align-self: stretch;
+  }
 }
 
 /* ============================================================
-   RESPONSIVE — 420px (SMALL MOBILE)
+   SMALL MOBILE
    ============================================================ */
+
 @media (max-width: 420px) {
-  .prg-card-media { height: 190px; }
-  .prg-card-body { padding: 20px 18px 22px; }
-  .prg-card-title { font-size: 17px; }
-  .prg-card-desc { font-size: 13px; }
-  .prg-stat-value { font-size: 19px; }
-  .prg-card-icon { width: 42px; height: 42px; }
-  .prg-card-btn { width: 100%; padding: 13px 20px; }
+  .prg-section {
+    padding: 56px 0 62px;
+  }
+
+  .prg-container {
+    padding: 0 15px;
+  }
+
+  .prg-title {
+    font-size: 29px;
+  }
+
+  .prg-card-media {
+    height: 195px;
+  }
+
+  .prg-card-tag {
+    top: 13px;
+    left: 13px;
+    min-height: 26px;
+    padding: 6px 11px;
+    font-size: 9px;
+  }
+
+  .prg-card-icon {
+    top: 13px;
+    right: 13px;
+    width: 41px;
+    height: 41px;
+    border-radius: 12px;
+  }
+
+  .prg-card-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .prg-card-stat {
+    right: 13px;
+    bottom: 12px;
+    min-width: 92px;
+    padding: 9px 11px;
+  }
+
+  .prg-stat-value {
+    font-size: 19px;
+  }
+
+  .prg-stat-label {
+    font-size: 8px;
+  }
+
+  .prg-card-body {
+    padding: 22px 18px 23px;
+  }
+
+  .prg-card-title {
+    font-size: 17px;
+  }
+
+  .prg-card-description {
+    font-size: 12.5px;
+  }
+
+  .prg-meta-item {
+    align-items: flex-start;
+    font-size: 11.5px;
+  }
 }
 
 /* ============================================================
-   REDUCED MOTION
+   EXTRA SMALL MOBILE
    ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-  .prg-section *,
-  .prg-section *::before,
-  .prg-section *::after {
-    animation: none !important;
-    transition-duration: 0.01ms !important;
+
+@media (max-width: 350px) {
+  .prg-container {
+    padding: 0 12px;
   }
-  .prg-particle { display: none !important; }
+
+  .prg-title {
+    font-size: 26px;
+  }
+
+  .prg-subtitle {
+    font-size: 12.5px;
+  }
+
+  .prg-card-media {
+    height: 180px;
+  }
+
+  .prg-card-body {
+    padding: 20px 16px 21px;
+  }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+
+@media print {
+  .prg-section {
+    padding: 35px 0;
+    background-color: #ffffff;
+  }
+
+  .prg-grid {
+    gap: 20px;
+  }
+
+  .prg-card {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .prg-card-button {
+    display: none;
+  }
 }

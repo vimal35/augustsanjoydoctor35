@@ -121,6 +121,10 @@ const HeroBanner = () => {
         <div className="hb-grid-pattern" />
       </div>
 
+      {/* ---------- Corner Frame Accents ---------- */}
+      <div className="hb-corner hb-corner-tl" />
+      <div className="hb-corner hb-corner-br" />
+
       {/* ---------- Left / Right Golden Arrows ---------- */}
       <button
         className="hb-arrow hb-arrow-left"
@@ -145,6 +149,7 @@ const HeroBanner = () => {
       <div className="hb-container">
         <div className="hb-content" key={active.id}>
           <div className="hb-tagline hb-anim hb-anim-1">
+            <span className="hb-tagline-line" />
             <span className="hb-tagline-dot" />
             <span>{active.tagline}</span>
           </div>
@@ -174,7 +179,7 @@ const HeroBanner = () => {
       <div className="hb-bottom-bar">
         <div className="hb-counter">
           <span className="hb-counter-current">0{current + 1}</span>
-          <span className="hb-counter-sep">/</span>
+          <span className="hb-counter-sep" />
           <span className="hb-counter-total">0{length}</span>
         </div>
 

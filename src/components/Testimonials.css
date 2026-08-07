@@ -1,17 +1,13 @@
-/* ============================================================
-   PATIENT SUCCESS STORIES — AUREAL CLINICAL CARE
-   Dark Green BG · White Text · Golden Accents
-   Text Reviews (Google-style) + Video Reviews (Reels)
-   ============================================================ */
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 .tst-section {
   position: relative;
   overflow: hidden;
   padding: 100px 0;
-  background: linear-gradient(135deg, #021a10 0%, #041e14 45%, #06341f 100%);
+  /* Creamy white gradient background */
+  background: linear-gradient(135deg, #fdfbf7 0%, #f4f0e6 45%, #eaddce 100%);
   font-family: "Poppins", sans-serif;
+  color: #000000;
 }
 
 .tst-section * {
@@ -36,36 +32,38 @@
   will-change: transform;
 }
 
+/* Deep Dark Green Orb */
 .tst-orb-1 {
   top: -120px;
   right: -90px;
   width: 440px;
   height: 440px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.24), transparent 70%);
-  opacity: 0.5;
+  background: radial-gradient(circle, rgba(10, 77, 44, 0.25), transparent 70%);
+  opacity: 0.8;
 }
 
+/* Golden Yellow Orb */
 .tst-orb-2 {
   bottom: -150px;
   left: -110px;
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, rgba(10, 77, 44, 0.8), transparent 70%);
-  opacity: 0.7;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.25), transparent 70%);
+  opacity: 0.8;
 }
 
 .tst-grid-pattern {
   position: absolute;
   inset: 0;
   background-image: linear-gradient(
-      rgba(255, 255, 255, 0.03) 1px,
+      rgba(0, 0, 0, 0.03) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 55px 55px;
   mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, black 20%, transparent 78%);
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, black 20%, transparent 78%);
-  opacity: 0.45;
+  opacity: 0.6;
 }
 
 /* ============================================================
@@ -93,11 +91,11 @@
   gap: 9px;
   padding: 9px 20px;
   border-radius: 50px;
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: #f5d572;
+  background: rgba(10, 77, 44, 0.08);
+  border: 1px solid rgba(10, 77, 44, 0.2);
+  color: #0a4d2c;
   font-size: 12.5px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 22px;
@@ -108,7 +106,7 @@
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.8px;
-  color: #ffffff;
+  color: #000000;
   margin: 0 0 18px;
   perspective: 800px;
 }
@@ -125,18 +123,20 @@
   will-change: transform;
 }
 
+/* 100% black highlight for specific words or default gradient */
 .tst-word:nth-child(3) span {
-  background: linear-gradient(135deg, #f5d572, #d4af37);
+  background: linear-gradient(135deg, #000000, #111111);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .tst-subtitle {
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.7); /* 70% black */
   margin: 0 auto;
   max-width: 600px;
 }
@@ -159,9 +159,10 @@
   gap: 14px;
   padding: 14px 22px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(10, 77, 44, 0.15); /* Dark green border */
   backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
 }
 
 .tst-google-info {
@@ -173,7 +174,7 @@
 .tst-google-title {
   font-size: 16px;
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
 }
 
 .tst-google-rating {
@@ -185,7 +186,7 @@
 .tst-google-rating strong {
   font-size: 15px;
   font-weight: 800;
-  color: #f5d572;
+  color: #000000;
 }
 
 .tst-google-stars {
@@ -195,7 +196,7 @@
 
 .tst-google-count {
   font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.6);
 }
 
 /* ============================================================
@@ -227,7 +228,7 @@
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 6px 0;
+  padding: 10px 0 20px 0; /* Add bottom padding for shadow */
 }
 
 .tst-text-track::-webkit-scrollbar {
@@ -241,20 +242,44 @@
   border-radius: 18px;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.07) 0%,
-    rgba(255, 255, 255, 0.02) 100%
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.7) 100%
   );
-  border: 1px solid rgba(212, 175, 55, 0.18);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(10, 77, 44, 0.15); /* Dark green border */
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Deep dark green with golden yellow hover effect */
 .tst-review-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(212, 175, 55, 0.5);
-  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
+  transform: translateY(-8px) scale(1.02);
+  border-color: #d4af37; /* Golden yellow */
+  background: linear-gradient(
+    135deg,
+    #021a10 0%,
+    #042617 100%
+  ); /* Deep dark green */
+  box-shadow: 0 20px 44px rgba(2, 26, 16, 0.25);
+  color: #ffffff; /* text changes to white to be readable */
+}
+
+/* Invert text colors on hover for readability */
+.tst-review-card:hover .tst-review-name,
+.tst-review-card:hover .tst-google-title {
+  color: #ffffff;
+}
+
+.tst-review-card:hover .tst-review-role,
+.tst-review-card:hover .tst-review-time {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tst-review-card:hover .tst-review-text {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .tst-review-top {
@@ -275,6 +300,7 @@
   font-size: 16px;
   font-weight: 700;
   flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .tst-review-meta {
@@ -286,14 +312,17 @@
 }
 
 .tst-review-name {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
+  transition: color 0.4s ease;
 }
 
 .tst-review-role {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  transition: color 0.4s ease;
 }
 
 .tst-review-google {
@@ -310,15 +339,18 @@
 .tst-review-time {
   margin-left: 8px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+  transition: color 0.4s ease;
 }
 
 .tst-review-text {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(0, 0, 0, 0.7); /* 70% black */
   margin: 0;
+  transition: color 0.4s ease;
 }
 
 /* ============================================================
@@ -345,9 +377,10 @@
   width: 46px;
   height: 46px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #f5d572, #d4af37);
-  color: #021a10;
+  background: linear-gradient(135deg, #021a10, #042617);
+  color: #f5d572;
   flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(2, 26, 16, 0.2);
 }
 
 .tst-video-heading > div {
@@ -358,7 +391,8 @@
 
 .tst-video-sub {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .tst-video-nav {
@@ -373,20 +407,21 @@
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1.5px solid rgba(212, 175, 55, 0.35);
-  color: #f5d572;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(10, 77, 44, 0.2); /* Dark green border */
+  color: #021a10;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(8px);
 }
 
+/* Hover: Deep dark green with golden yellow accents */
 .tst-nav-btn:hover {
-  background: linear-gradient(135deg, #f5d572, #d4af37);
-  color: #021a10;
-  border-color: transparent;
+  background: #021a10; /* Deep dark green */
+  color: #f5d572; /* Golden yellow */
+  border-color: #d4af37;
   transform: scale(1.1);
-  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 24px rgba(2, 26, 16, 0.3);
 }
 
 .tst-nav-btn:active {
@@ -435,13 +470,22 @@
   cursor: pointer;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0.55;
+  opacity: 0.6;
   transform: scale(0.9);
 }
 
 .tst-video-card.is-active {
   opacity: 1;
   transform: scale(1);
+}
+
+.tst-video-card:hover {
+  opacity: 1;
+  transform: scale(0.95);
+}
+
+.tst-video-card.is-active:hover {
+  transform: scale(1.02);
 }
 
 .tst-video-frame {
@@ -451,13 +495,14 @@
   border-radius: 20px;
   overflow: hidden;
   background: #000;
-  border: 2px solid rgba(212, 175, 55, 0.2);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
-  transition: border-color 0.4s ease;
+  border: 2px solid rgba(10, 77, 44, 0.2); /* Dark green border */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .tst-video-card.is-active .tst-video-frame {
-  border-color: rgba(212, 175, 55, 0.6);
+  border-color: #d4af37; /* Golden yellow */
+  box-shadow: 0 18px 40px rgba(2, 26, 16, 0.3);
 }
 
 .tst-video-frame iframe {
@@ -482,7 +527,7 @@
     to top,
     rgba(2, 26, 16, 0.9) 0%,
     transparent 45%,
-    rgba(2, 26, 16, 0.3) 100%
+    rgba(2, 26, 16, 0.2) 100%
   );
 }
 
@@ -497,13 +542,13 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f5d572, #d4af37);
-  color: #021a10;
-  border: none;
+  background: linear-gradient(135deg, #021a10, #042617); /* Deep dark green */
+  color: #f5d572; /* Golden yellow */
+  border: 2px solid #d4af37;
   cursor: pointer;
   padding-left: 4px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(2, 26, 16, 0.4);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.35s ease;
 }
 
 .tst-play-btn::before {
@@ -511,7 +556,7 @@
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  border: 2px solid rgba(212, 175, 55, 0.5);
+  border: 2px solid rgba(212, 175, 55, 0.6);
   animation: tstPulse 2s ease-out infinite;
 }
 
@@ -527,7 +572,9 @@
 }
 
 .tst-video-card:hover .tst-play-btn {
-  transform: translate(-50%, -50%) scale(1.12);
+  transform: translate(-50%, -50%) scale(1.15);
+  background: linear-gradient(135deg, #f5d572, #d4af37);
+  color: #021a10;
 }
 
 .tst-video-info {
@@ -544,8 +591,9 @@
   align-self: flex-start;
   padding: 4px 12px;
   border-radius: 50px;
-  background: rgba(212, 175, 55, 0.9);
-  color: #021a10;
+  background: rgba(2, 26, 16, 0.85); /* Deep dark green */
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #f5d572; /* Golden yellow */
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -570,20 +618,21 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(10, 77, 44, 0.2); /* Dark green */
   border: none;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tst-dot:hover {
-  background: rgba(212, 175, 55, 0.6);
+  background: rgba(10, 77, 44, 0.6);
 }
 
 .tst-dot.is-active {
   width: 28px;
   border-radius: 50px;
-  background: linear-gradient(90deg, #f5d572, #d4af37);
+  background: linear-gradient(90deg, #021a10, #042617);
+  box-shadow: 0 4px 10px rgba(2, 26, 16, 0.2);
 }
 
 /* ============================================================

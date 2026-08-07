@@ -68,12 +68,18 @@ const CARE_GUIDELINES = [
 ];
 
 const FAQ = () => {
-  const [activeTab, setActiveTab] = useState("common"); // 'common' | 'guidelines'
+  const [activeTab, setActiveTab] = useState("common");
   const [openId, setOpenId] = useState("cq-1");
+  const [isSwitching, setIsSwitching] = useState(false);
 
   const handleTabSwitch = (tab) => {
-    setActiveTab(tab);
-    setOpenId(tab === "common" ? "cq-1" : "cg-1");
+    if (tab === activeTab) return;
+    setIsSwitching(true);
+    setTimeout(() => {
+      setActiveTab(tab);
+      setOpenId(tab === "common" ? "cq-1" : "cg-1");
+      setIsSwitching(false);
+    }, 220);
   };
 
   const toggleAccordion = (id) => {
@@ -84,83 +90,114 @@ const FAQ = () => {
 
   return (
     <section className="faq-section">
-      {/* Background Decorators */}
+      {/* Ambient Orbs */}
       <div className="faq-glow faq-glow-left" />
       <div className="faq-glow faq-glow-right" />
+      <div className="faq-glow faq-glow-center" />
       <div className="faq-grid-pattern" />
+      <div className="faq-noise" />
 
       <div className="faq-container">
-        {/* Header Block */}
+        {/* Header */}
         <div className="faq-header">
-          <div className="faq-badge">
+          <div className="faq-badge" data-anim="fadeDown">
             <span className="faq-badge-dot" />
             <span>Clinical Intelligence & Guidelines</span>
+            <span className="faq-badge-pulse" />
           </div>
-          <h2 className="faq-title">Frequently Asked Questions</h2>
-          <p className="faq-subtitle">
-            Explore authoritative answers on our specialist home care model, high-tech monitoring systems, and essential caregiver guidelines.
+
+          <h2 className="faq-title" data-anim="fadeUp">
+            Frequently Asked <span className="faq-title-highlight">Questions</span>
+          </h2>
+
+          <p className="faq-subtitle" data-anim="fadeUp" style={{ animationDelay: "80ms" }}>
+            Explore authoritative answers on our <span>specialist home care model</span>, high-tech monitoring systems, and essential caregiver guidelines.
           </p>
 
-          {/* Golden Category Switcher Tabs */}
-          <div className="faq-tab-group">
+          {/* Stats bar */}
+          
+
+          {/* Tabs */}
+          <div className="faq-tab-group" data-anim="fadeUp" style={{ animationDelay: "160ms" }} role="tablist">
+            <div className={`faq-tab-indicator ${activeTab === "guidelines" ? "shift" : ""}`} />
             <button
               className={`faq-tab-btn ${activeTab === "common" ? "active" : ""}`}
               onClick={() => handleTabSwitch("common")}
               aria-selected={activeTab === "common"}
+              role="tab"
+              type="button"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="faq-tab-icon">
-                <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="faq-tab-icon">
+                <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01M12 22a10 10 0 110-20 10 10 0 010 20z" />
               </svg>
               <span>5 Common Questions</span>
+              {activeTab === "common" && <span className="faq-tab-count">05</span>}
             </button>
 
             <button
               className={`faq-tab-btn ${activeTab === "guidelines" ? "active" : ""}`}
               onClick={() => handleTabSwitch("guidelines")}
               aria-selected={activeTab === "guidelines"}
+              role="tab"
+              type="button"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="faq-tab-icon">
-                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="faq-tab-icon">
+                <path d="M12 3l7 4v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V7l7-4z" />
+                <path d="M9 12l2 2 4-4" />
               </svg>
               <span>5 Home Care Guidelines</span>
+              {activeTab === "guidelines" && <span className="faq-tab-count">05</span>}
             </button>
           </div>
         </div>
 
-        {/* Accordion Container */}
-        <div className="faq-accordion-wrapper">
+        {/* Accordion */}
+        <div className={`faq-accordion-wrapper ${isSwitching ? "switching" : ""}`}>
           {currentList.map((item, index) => {
             const isOpen = openId === item.id;
             return (
               <div
                 key={item.id}
                 className={`faq-accordion-item ${isOpen ? "open" : ""}`}
+                style={{ animationDelay: `${index * 70}ms` }}
+                data-anim="slideUp"
               >
+                {/* Gold top border shimmer for open */}
+                <div className="faq-item-shimmer" />
+
                 <button
                   className="faq-question-btn"
                   onClick={() => toggleAccordion(item.id)}
                   aria-expanded={isOpen}
+                  type="button"
                 >
                   <div className="faq-question-left">
-                    <span className="faq-index-number">0{index + 1}</span>
+                    <span className="faq-index-number">
+                      <span className="faq-index-text">0{index + 1}</span>
+                    </span>
                     <span className="faq-question-text">{item.question}</span>
                   </div>
-                  <div className="faq-icon-wrapper">
-                    <svg
-                      className="faq-chevron"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                    >
-                      <path d="M19 9l-7 7-7-7" />
+                  <div className="faq-icon-wrapper" aria-hidden="true">
+                    <svg className="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                 </button>
 
                 <div className="faq-answer-collapse">
                   <div className="faq-answer-inner">
+                    <div className="faq-answer-divider" />
                     <p>{item.answer}</p>
+                    <div className="faq-answer-meta">
+                      <span className="faq-meta-pill">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                        NHS-aligned
+                      </span>
+                      <span className="faq-meta-pill gold">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                        24/7 Support
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -168,19 +205,31 @@ const FAQ = () => {
           })}
         </div>
 
-        {/* Bottom Contact Hook */}
-        <div className="faq-footer-card">
+        {/* Footer */}
+        <div className="faq-footer-card" data-anim="fadeUp" style={{ animationDelay: "280ms" }}>
+          <div className="faq-footer-glow" />
           <div className="faq-footer-text">
-            <h4>Have a specific clinical query regarding your home care plan?</h4>
+            <h4>
+              Have a specific <span>clinical query</span> regarding your home care plan?
+            </h4>
             <p>Our senior triage physicians are available 24/7 to provide personalized guidance.</p>
           </div>
           <a href="tel:+919944969049" className="faq-gold-action-btn">
+            <span className="faq-btn-glow" />
+            <span className="faq-btn-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01-.08-.18 2 2 0 011.92 1h3a2 2 0 012 1.72c.12 1.33.37 2.61.72 3.83a2 2 0 01-.57 2.11L6 9.73a16 16 0 006.27 6.27l1.07-1.07a2 2 0 012.11-.57c1.22.35 2.5.6 3.83.72A2 2 0 0122 16.92z"/></svg>
+            </span>
             <span>Speak to Triage Physician</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
+            <svg className="faq-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
         </div>
+
+        <p className="faq-trust">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0f2a1e" strokeWidth="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          Trusted by 12,000+ families • CQC & NHS-aligned protocols • Encrypted HIMS data
+        </p>
       </div>
     </section>
   );
